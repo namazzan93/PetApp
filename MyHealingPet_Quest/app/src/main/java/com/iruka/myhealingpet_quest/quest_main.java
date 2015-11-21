@@ -1,6 +1,6 @@
 package com.iruka.myhealingpet_quest;
 
-//iRuKa777
+//iRuKa
 
 import android.app.AlarmManager;
 import android.app.Notification;
