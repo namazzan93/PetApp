@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3b05c18f60969ecc2ba49c0409c4b96be2d9cb0c">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-220786603bdf4da469fe2433dc13d4db50b20754.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="997773777cf3904c11d6764fe3b7668538220e49">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-07ccbdf1cf69507b9502786be34ff18f32c3abb8.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-0c802054fcd3e42bf9f590792b0e9e4e08b4f22e.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dcb5b75baf05d92e61d5706737200ee55949f97b">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-80a6cd6c32791c02a5b0aea22d7607dbf4fc491c.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d61920aba361832a9545a43fa8c9453eb02f18f7">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-78e679b6a3e1e9a4a4e67e5fec942a13b1bfec29.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-d822b20b717f6a0e876564b076264bdc52baec1e.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-f1dc90ad0da3ab128407bf334bdab14f8f0d4c9f.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9cf8c0ef60847621c7ad00b4f78dbfc9daba4af2">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-e6bb1052413e9ed1c589ed2789d953c52a40c644.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-402fdb0368615e71a708978175dfe74d7955bc7e.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="325788a04b436a0bccbc5b4c54cf0f12ebdcbd2d">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-429c0b561fe5d88bc7dec606c70c2747cff543ec.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3c729e6d76a36c5dc27e6a4c4009296f49eaa88a">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-1c0394a6e987177743ca941b47b00295728d730f.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-7db15f4c63dbc7317f9bedeb53c2b0adacc6356c.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="95758a2905669affbffc5ddd262921d375674fad">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-c755620829499fc81a3942c3303e54ca594581bd.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b92002cb2f0e11a226ac5bac6dff1dc2a9d0b774">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-55eba4749164f7c6bbe9e8add953f7e22e89b6a4.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3aed37c38c56679602255dd72ef356da5d327cda">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-ea1a59ff8780fccf84184b2ecbf436f6a29544f7.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2a7e47da654546f9457deb6132364f1bf33a1857">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-758def909a2f779a122593dbcb894c9696c2607a.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="041d93cf0533591c29d1d7263b2fa114dbfb20bd">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-34afac73451d0dd07abcf56b8493f1b333bb3992.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d93480da1d303122ee67dc3bc23e6297bdef9951">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-a7ef7819a404770cd320f7c5b7292650327d6048.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="482de223655d06253cc6a4955d653f8994169500">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-5535f57b8c113e998719516d8fce0aa690f8dfc9.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="82825756edeeb3b56b15e73b2edd56e93da5a444">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-f25f871756ab971b015b14ed87761ea5e4af391f.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-75ba48b596943907bca97595053eb6b52d36276c.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3178362320bcf51228835b60ff978efadfd1f783">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-c2f7485a8733f72c565de959a4c848a25517dd60.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-4d469bbd85dbc11f093259c14ab5dc8e382cd970.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d294caf562c4c678b2ef351662a0ca6f1a4d06c0">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-86359f24d6af81cf6d232ccb98794a4db3f8b489.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="993834cb17d07d51b92db89d2c330243592ebf77">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-4d4625a53cb7e744a049383dae607cab4b2c2551.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="97f3b099801a9ad9d70e835b9125273e986eb68d">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-2260be3ff2d272cb8ce95d3fd82c22b76eda9173.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="17449c47df35c754b257532052f1270c444f7993">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\classes-41d3fea120ce342ff781e092adc04925515873ea.jar" />
+    </item>
+    <item
+        jar="C:\Users\iRuKa\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="C:\Users\iRuKa\Desktop\MyHealingPet_Quest\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-21af42527a59317390dae6fe5868ad3a3cc51934.jar" />
+    </item>
+
+</items>
