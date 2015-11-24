@@ -15,19 +15,21 @@ public class Quest_Alarm extends BroadcastReceiver {
     Random mRand;
     public int intQuestRand;
 
-    public void onReceive (Context context, Intent intent) {
+
+    public void onReceive(Context context, Intent intent) {
         // TODO: Return the communication channel to the service.
         //Toast.makeText(context, "hi", Toast.LENGTH_LONG).show();
 
         mRand = new Random();
         intQuestRand = mRand.nextInt(2);
 
+
         if (intQuestRand == 0) {
             ((Quest_Main) Quest_Main.mContext).onNotificationGPS();
+            ((Quest_Main) Quest_Main.mContext).gpsButton();
         } else {
             ((Quest_Main) Quest_Main.mContext).onNotificationShake();
+            ((Quest_Main) Quest_Main.mContext).shakeButton();
         }
-
-
     }
 }

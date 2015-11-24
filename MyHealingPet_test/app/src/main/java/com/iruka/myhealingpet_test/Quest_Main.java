@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -19,7 +20,8 @@ public class Quest_Main extends AppCompatActivity {
 
     Random mRand;
     public int intQuestRand;
-
+    private Button onGPS;
+    private Button onShake;
     public static Context mContext;
 
     @Override
@@ -27,6 +29,9 @@ public class Quest_Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quest_main_layout);
         mContext=this;
+
+        onGPS = (Button) findViewById(R.id.onGPS);
+        onShake = (Button) findViewById(R.id.onShake);
 
         onAlarm();
     }
@@ -128,5 +133,16 @@ public class Quest_Main extends AppCompatActivity {
         Notification n = builder.build();
         nm.notify(0002, n);
 
+    }
+
+    public void gpsButton(){
+
+        onGPS.setEnabled(true);
+        onShake.setEnabled(false);
+    }
+
+    public void shakeButton(){
+        onGPS.setEnabled(false);
+        onShake.setEnabled(true);
     }
 }

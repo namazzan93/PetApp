@@ -98,8 +98,10 @@ public class Quest_Shake extends Activity implements SensorEventListener {
                     counttext.setText(Integer.toString(++count));
 
 
-                    if(count >= 10)
+                    if(count >= 10){
                         Toast.makeText(this, "10번이상 흔듬!!", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                     else
                         Toast.makeText(this, "흔들기!", Toast.LENGTH_SHORT).show();
                 }
