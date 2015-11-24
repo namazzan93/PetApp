@@ -1,4 +1,4 @@
-package com.example.iruka.myhealingpet_test;
+package com.iruka.myhealingpet_test;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

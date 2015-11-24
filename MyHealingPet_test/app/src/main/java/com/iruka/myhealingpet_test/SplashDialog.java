@@ -1,4 +1,4 @@
-package com.example.iruka.myhealingpet_test;
+package com.iruka.myhealingpet_test;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -25,7 +25,7 @@ public class SplashDialog extends Dialog {
         lpWindow.dimAmount = 0.8f;
         getWindow().setAttributes(lpWindow);
 
-        setContentView(R.layout.splashdialog);
+        setContentView(R.layout.splashdialog_layout);
         img = (ImageView)findViewById(R.id.imageView);
         btnstart = (Button)findViewById(R.id.btnstart);
         setClickListener(startListener);

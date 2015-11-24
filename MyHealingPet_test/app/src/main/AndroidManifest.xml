@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.iruka.myhealingpet_test">
+    package="com.iruka.myhealingpet_test">
 
     <uses-sdk
         android:minSdkVersion="21"
@@ -8,11 +8,11 @@
 
     <!-- 내 프로젝트에 대한 보안 수준 설정. 내 프로젝트의 패키지가 org.androidtown.lbs.map 인 경우 -->
     <permission
-        android:name="com.example.iruka.myhealingpet_test.permission.MAPS_RECEIVE"
+        android:name="com.iruka.myhealingpet_test.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
     <!-- 구글맵 API v2의 권한 설정 -->
-    <uses-permission android:name="com.example.iruka.myhealingpet_test.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.iruka.myhealingpet_test.permission.MAPS_RECEIVE" />
 
     <!-- 구글맵 API v2의 일반 권한 설정. -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -64,33 +64,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MenuActivity"
+        <activity android:name=".Pet_MenuBar"
             android:finishOnTaskLaunch="true"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".StatusActivity"
+        <activity android:name=".Pet_Status"
             android:finishOnTaskLaunch="true"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".quest_main"
+        <activity android:name=".Quest_Main"
             android:finishOnTaskLaunch="true"
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".quest_gps"
+            android:theme="@style/Theme.AppCompat"/>
+        <activity android:name=".Quest_Gps"
             android:theme="@style/Theme.AppCompat"> </activity>
-        <activity android:name=".quest_shake"> </activity>
-        <receiver android:name=".quest_alarm"> </receiver>
+        <activity android:name=".Quest_Shake"> </activity>
+        <receiver android:name=".Quest_Alarm"> </receiver>
         <service
-            android:name=".PetService"
+            android:name=".Pet_Service"
             android:enabled="true"
             android:exported="false"
             android:process=":service"
             > <!-- 퍼미션 중요 -->
             <intent-filter >
-                <action android:name="ccom.example.iruka.myhealingpet_test.CHAT"/>
+                <action android:name="ccom.iruka.myhealingpet_test.CHAT"/>
             </intent-filter>
         </service>
     </application>

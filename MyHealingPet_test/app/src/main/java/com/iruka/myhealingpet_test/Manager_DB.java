@@ -1,4 +1,4 @@
-package com.example.iruka.myhealingpet_test;
+package com.iruka.myhealingpet_test;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -8,14 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * Created by Sung TaeHun on 2015-11-20.
  */
-public class DBManager extends SQLiteOpenHelper {
+public class Manager_DB extends SQLiteOpenHelper {
     private static final String TB_Name = "Pet";
     private static final String DB_Name = "MyDB";
     public static final int DB_Version = 1;
 
 
 
-    public DBManager(Context context){
+    public Manager_DB(Context context){
         super(context, DB_Name, null, DB_Version);
     }
 

@@ -1,4 +1,4 @@
-package com.example.iruka.myhealingpet_test;
+package com.iruka.myhealingpet_test;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * Created by iRuKa on 2015-11-18.
  */
-public class quest_alarm extends BroadcastReceiver {
+public class Quest_Alarm extends BroadcastReceiver {
 
     Random mRand;
     public int intQuestRand;
@@ -23,9 +23,9 @@ public class quest_alarm extends BroadcastReceiver {
         intQuestRand = mRand.nextInt(2);
 
         if (intQuestRand == 0) {
-            ((quest_main) quest_main.mContext).onNotificationGPS();
+            ((Quest_Main) Quest_Main.mContext).onNotificationGPS();
         } else {
-            ((quest_main) quest_main.mContext).onNotificationShake();
+            ((Quest_Main) Quest_Main.mContext).onNotificationShake();
         }
 
 

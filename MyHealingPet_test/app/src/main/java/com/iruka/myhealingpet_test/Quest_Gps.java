@@ -1,4 +1,4 @@
-package com.example.iruka.myhealingpet_test;
+package com.iruka.myhealingpet_test;
 
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -42,7 +42,7 @@ import java.util.ArrayList;
  *
  * @author Mike
  */
-public class quest_gps extends ActionBarActivity {
+public class Quest_Gps extends ActionBarActivity {
 
     private RelativeLayout mainLayout;
     private GoogleMap map;
@@ -65,7 +65,7 @@ public class quest_gps extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quest_gps);
+        setContentView(R.layout.quest_gps_layout);
 
 
         // 메인 레이아웃 객체 참조

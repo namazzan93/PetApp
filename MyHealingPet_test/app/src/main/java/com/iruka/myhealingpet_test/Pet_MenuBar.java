@@ -1,4 +1,4 @@
-package com.example.iruka.myhealingpet_test;
+package com.iruka.myhealingpet_test;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,22 +10,21 @@ import android.widget.Toast;
 /**
  * Created by Sung TaeHun on 2015-10-30.
  */
-public class MenuActivity extends Activity {
+public class Pet_MenuBar extends Activity {
     public static boolean MenuActive = false;
-    public static MenuActivity myMenu;
+    public static Pet_MenuBar myMenu;
     private Button btnExit;
     private Button btn1, btn2, btn3, btn4, btn5;
     private View top;
     public static int level;
     public static int heart;
     public static int hungry;
-    //private StatusActivity myStatus;
 
     protected void onCreate(Bundle saveIndstanceState) {
         super.onCreate(saveIndstanceState);
-        setContentView(R.layout.menu_layout);
-        ProcessManager.getInstance().addActivity(this);
-        myMenu = MenuActivity.this;
+        setContentView(R.layout.pet_menubar_layout);
+        Manager_Process.getInstance().addActivity(this);
+        myMenu = Pet_MenuBar.this;
         setLayout();
         setClickListener(MenuListener);
         top.setOnClickListener(new View.OnClickListener() {
@@ -60,17 +59,17 @@ public class MenuActivity extends Activity {
         public void onClick(View view) {
             switch(view.getId()){
                 case R.id.button6:
-                    stopService(new Intent(getApplicationContext(), PetService.class));
+                    stopService(new Intent(getApplicationContext(), Pet_Service.class));
                     Toast.makeText(getApplicationContext(), "삭제 버튼입니다.", Toast.LENGTH_SHORT).show();
                     finish();
                     break;
                 case R.id.button:
                     //Toast.makeText(getApplicationContext(), "버튼1 입니다.", Toast.LENGTH_SHORT).show();
-                    Intent it = new Intent(getApplication(), StatusActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    Intent it = new Intent(getApplication(), Pet_Status.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(it);
                     break;
                 case R.id.button2:
-                    Intent quest = new Intent(getApplication(), quest_main.class);
+                    Intent quest = new Intent(getApplication(), Quest_Main.class);
                     startActivity(quest);
                     break;
                 case R.id.button3:
@@ -104,7 +103,7 @@ public class MenuActivity extends Activity {
         // TODO Auto-generated method stub
         super.onDestroy();
         MenuActive = false;
-        ProcessManager.getInstance().deleteActivity(this);
+        Manager_Process.getInstance().deleteActivity(this);
     }
 
 }

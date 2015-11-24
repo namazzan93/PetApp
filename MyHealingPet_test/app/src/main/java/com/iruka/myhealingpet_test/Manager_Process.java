@@ -1,4 +1,4 @@
-package com.example.iruka.myhealingpet_test;
+package com.iruka.myhealingpet_test;
 
 import android.app.Activity;
 
@@ -7,23 +7,23 @@ import java.util.ArrayList;
 /**
  * Created by Sung TaeHun on 2015-11-24.
  */
-public class ProcessManager {
-    private static ProcessManager instance = null;
+public class Manager_Process {
+    private static Manager_Process instance = null;
     private ArrayList<Activity> mActivityArr;
 
-    private ProcessManager(){
+    private Manager_Process(){
         mActivityArr = new ArrayList<Activity>();
     }
 
-    public static ProcessManager getInstance(){
-        if(ProcessManager.instance == null){
-            synchronized (ProcessManager.class){
-                if(ProcessManager.instance == null){
-                    ProcessManager.instance = new ProcessManager();
+    public static Manager_Process getInstance(){
+        if(Manager_Process.instance == null){
+            synchronized (Manager_Process.class){
+                if(Manager_Process.instance == null){
+                    Manager_Process.instance = new Manager_Process();
                 }
             }
         }
-        return ProcessManager.instance;
+        return Manager_Process.instance;
     }
 
     public void addActivity(Activity activity){

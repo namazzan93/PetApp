@@ -1,4 +1,4 @@
-package com.example.iruka.myhealingpet_test;
+package com.iruka.myhealingpet_test;
 
 import android.app.Service;
 import android.content.Intent;
@@ -23,7 +23,7 @@ import android.widget.RelativeLayout;
 /**
  * Created by Sung TaeHun on 2015-10-13.
  */
-public class PetService extends Service {
+public class Pet_Service extends Service {
     private WindowManager windowManager;
     private RelativeLayout chatHeadView;
     private ImageView chatHead;
@@ -40,13 +40,13 @@ public class PetService extends Service {
     private Animation anim;
     private Thread thread;
     private Handler mHandler;
-    private DBManager db;
+    private Manager_DB db;
     private int cnt_heart = 0;
     private int cnt_level = 0;
     private int level = 0;
     private int hungry = 0;
     private int heart = 0;
-    public static PetService myPet;
+    public static Pet_Service myPet;
 
 
     //아무것도 안하는 제스쳐 리스너
@@ -74,11 +74,11 @@ public class PetService extends Service {
         @Override
         public boolean onDoubleTap(MotionEvent e) {
             isDoubleClick = true;
-            if(MenuActivity.MenuActive){
-                MenuActivity.myMenu.finish();
+            if(Pet_MenuBar.MenuActive){
+                Pet_MenuBar.myMenu.finish();
             }
             else {
-                Intent it = new Intent(getApplication(), MenuActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Intent it = new Intent(getApplication(), Pet_MenuBar.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(it);
             }
             return true;
@@ -168,12 +168,12 @@ public class PetService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        myPet = PetService.this;
-        db = new DBManager(this.getApplication());
+        myPet = Pet_Service.this;
+        db = new Manager_DB(this.getApplication());
         setDBDate();
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        chatHeadView = (RelativeLayout) inflater.inflate(R.layout.pet_layout, null);
+        chatHeadView = (RelativeLayout) inflater.inflate(R.layout.pet_service_layout, null);
         chatHead = (ImageView)chatHeadView.findViewById(R.id.pet_img);
         chatHeadView.setOnTouchListener(mViewTouchListener);
         chatHead.setImageResource(R.drawable.frame_normal);
@@ -262,6 +262,6 @@ public class PetService extends Service {
         if(chatHeadView != null){
             windowManager.removeView(chatHeadView);
         }
-        ProcessManager.getInstance().allEndActivity();
+        Manager_Process.getInstance().allEndActivity();
     }
 }

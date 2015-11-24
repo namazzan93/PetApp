@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.example.iruka.myhealingpet_test"
+        applicationId "com.iruka.myhealingpet_test"
         minSdkVersion 21
         targetSdkVersion 22
         versionCode 1

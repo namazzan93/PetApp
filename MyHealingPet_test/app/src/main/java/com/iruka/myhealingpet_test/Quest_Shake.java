@@ -1,4 +1,4 @@
-package com.example.iruka.myhealingpet_test;
+package com.iruka.myhealingpet_test;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 /**
  * Created by iRuKa on 2015-11-18.
  */
-public class quest_shake extends Activity implements SensorEventListener {
+public class Quest_Shake extends Activity implements SensorEventListener {
 
     private long lastTime;
     private float speed;
@@ -44,7 +44,7 @@ public class quest_shake extends Activity implements SensorEventListener {
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerormeterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-        setContentView(R.layout.activity_quest_shake);
+        setContentView(R.layout.quest_shake_layout);
 
 
 

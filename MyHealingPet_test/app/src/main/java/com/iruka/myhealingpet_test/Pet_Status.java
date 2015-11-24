@@ -1,4 +1,4 @@
-package com.example.iruka.myhealingpet_test;
+package com.iruka.myhealingpet_test;
 
 import android.app.Activity;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 /**
  * Created by Sung TaeHun on 2015-11-11.
  */
-public class StatusActivity extends Activity {
+public class Pet_Status extends Activity {
 
     private View top;
     private TextView txtlevel;
@@ -22,9 +22,9 @@ public class StatusActivity extends Activity {
     private int level;
     private int heart;
     private int hungry;
-    private DBManager db;
+    private Manager_DB db;
     private SQLiteDatabase sql;
-    public static StatusActivity myStatus;
+    public static Pet_Status myStatus;
     private Thread level_thread;
     private Thread heart_thread;
     private Thread hungry_thread;
@@ -32,12 +32,12 @@ public class StatusActivity extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.status_layout);
-        ProcessManager.getInstance().addActivity(this);
+        setContentView(R.layout.pet_status_layout);
+        Manager_Process.getInstance().addActivity(this);
         setLayout();
-        myStatus = StatusActivity.this;
+        myStatus = Pet_Status.this;
 
-        db = new DBManager(this.getApplication());
+        db = new Manager_DB(this.getApplication());
 
         setDBDate();
 
@@ -83,6 +83,6 @@ public class StatusActivity extends Activity {
     protected void onDestroy() {
         // TODO Auto-generated method stub
         super.onDestroy();
-        ProcessManager.getInstance().deleteActivity(this);
+        Manager_Process.getInstance().deleteActivity(this);
     }
 }
