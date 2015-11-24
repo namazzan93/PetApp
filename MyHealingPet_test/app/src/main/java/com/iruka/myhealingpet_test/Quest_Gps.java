@@ -1,10 +1,10 @@
 package com.iruka.myhealingpet_test;
 
+import android.app.AlertDialog;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -50,7 +50,9 @@ public class Quest_Gps extends ActionBarActivity {
     private SensorManager mSensorManager;
 
     private LocationManager mLocationManager;
-    private TargetIntentReceiver mIntentReceiver;
+    private Quest_Gps_Alarm mIntentReceiver;
+
+    public static Context mContext;
 
     private Marker marker;
 
@@ -67,7 +69,7 @@ public class Quest_Gps extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quest_gps_layout);
 
-
+        mContext=this;
         // 메인 레이아웃 객체 참조
         mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
 
@@ -104,7 +106,7 @@ public class Quest_Gps extends ActionBarActivity {
                 textView01.setText("목표 : " + targetlatitude + ", " + targetlongitude);
 
                 // 수신자 객체 생성하여 등록
-                mIntentReceiver = new TargetIntentReceiver(intentKey);
+                mIntentReceiver = new Quest_Gps_Alarm(intentKey);
                 registerReceiver(mIntentReceiver, mIntentReceiver.getFilter());
 
                 Toast.makeText(getApplicationContext(), countTargets + "개 지점에 대한 근접 리스너 등록", Toast.LENGTH_LONG).show();
@@ -127,7 +129,7 @@ public class Quest_Gps extends ActionBarActivity {
                 textView01.setText("목표 : " + targetlatitude + ", " + targetlongitude);
 
                 // 수신자 객체 생성하여 등록
-                mIntentReceiver = new TargetIntentReceiver(intentKey);
+                mIntentReceiver = new Quest_Gps_Alarm(intentKey);
                 registerReceiver(mIntentReceiver, mIntentReceiver.getFilter());
 
                 Toast.makeText(getApplicationContext(), countTargets + "개 지점에 대한 근접 리스너 등록", Toast.LENGTH_LONG).show();
@@ -150,7 +152,7 @@ public class Quest_Gps extends ActionBarActivity {
                 textView01.setText("목표 : " + targetlatitude + ", " + targetlongitude);
 
                 // 수신자 객체 생성하여 등록
-                mIntentReceiver = new TargetIntentReceiver(intentKey);
+                mIntentReceiver = new Quest_Gps_Alarm(intentKey);
                 registerReceiver(mIntentReceiver, mIntentReceiver.getFilter());
 
                 Toast.makeText(getApplicationContext(), countTargets + "개 지점에 대한 근접 리스너 등록", Toast.LENGTH_LONG).show();
@@ -331,48 +333,17 @@ public class Quest_Gps extends ActionBarActivity {
         }
     }
 
-    /**
-     * 브로드캐스팅 메시지를 받았을 때 처리할 수신자 정의
-     */
-    private class TargetIntentReceiver extends BroadcastReceiver {
 
-        private String mExpectedAction;
-        private Intent mLastReceivedIntent;
-
-        public TargetIntentReceiver(String expectedAction) {
-            mExpectedAction = expectedAction;
-            mLastReceivedIntent = null;
-        }
-
-        public IntentFilter getFilter() {
-            IntentFilter filter = new IntentFilter(mExpectedAction);
-            return filter;
-        }
-
-        /**
-         * 받았을 때 호출되는 메소드
-         *
-         * @param context
-         * @param intent
-         */
-        public void onReceive(Context context, Intent intent) {
-            if (intent != null) {
-                mLastReceivedIntent = intent;
-
-                int id = intent.getIntExtra("id", 0);
-                double latitude = intent.getDoubleExtra("latitude", 0.0D);
-                double longitude = intent.getDoubleExtra("longitude", 0.0D);
-
-                Toast.makeText(context, "근접한타겟 : " + id + ", " + latitude + ", " + longitude, Toast.LENGTH_LONG).show();
+    public void questFinish(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(Quest_Gps.this);
+        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();     //닫기
+                finish();
             }
-        }
-
-        public Intent getLastReceivedIntent() {
-            return mLastReceivedIntent;
-        }
-
-        public void clearReceivedIntents() {
-            mLastReceivedIntent = null;
-        }
+        });
+        alert.setMessage("테스트 메세지");
+        alert.show();
     }
 }

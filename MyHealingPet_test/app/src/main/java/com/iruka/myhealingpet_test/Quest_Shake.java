@@ -1,7 +1,9 @@
 package com.iruka.myhealingpet_test;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -100,15 +102,29 @@ public class Quest_Shake extends Activity implements SensorEventListener {
 
                     if(count >= 10){
                         Toast.makeText(this, "10번이상 흔듬!!", Toast.LENGTH_SHORT).show();
-                        finish();
+                        questFinish();
                     }
-                    else
-                        Toast.makeText(this, "흔들기!", Toast.LENGTH_SHORT).show();
+                    //else
+                        //Toast.makeText(this, "흔들기!", Toast.LENGTH_SHORT).show();
                 }
                 lastX = event.values[DATA_X];
                 lastY = event.values[DATA_Y];
                 lastZ = event.values[DATA_Z];
             }
         }
+    }
+
+
+    public void questFinish(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(Quest_Shake.this);
+        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();     //닫기
+                finish();
+            }
+        });
+        alert.setMessage("테스트 메세지");
+        alert.show();
     }
 }
