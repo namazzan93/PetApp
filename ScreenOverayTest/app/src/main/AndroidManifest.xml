@@ -23,10 +23,10 @@
             </intent-filter>
         </activity>
         <activity android:name="com.app.sungtaehun.screenoveraytest.MenuActivity"
-        android:finishOnTaskLaunch="true"
-        android:excludeFromRecents="true"
-        android:launchMode="singleTask"
-        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:finishOnTaskLaunch="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name="com.app.sungtaehun.screenoveraytest.StatusActivity"
             android:finishOnTaskLaunch="true"
             android:excludeFromRecents="true"
