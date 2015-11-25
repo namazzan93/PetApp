@@ -1,4 +1,4 @@
-package com.iruka.myhealingpet_quest;
+package com.iruka.myhealingpet_test;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -10,23 +10,28 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Random;
 
-public class quest_main extends AppCompatActivity {
+public class Quest_Main extends AppCompatActivity {
 
     Random mRand;
     public int intQuestRand;
-
+    private Button onGPS;
+    private Button onShake;
     public static Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quest_main);
+        setContentView(R.layout.quest_main_layout);
         mContext=this;
+
+        onGPS = (Button) findViewById(R.id.onGPS);
+        onShake = (Button) findViewById(R.id.onShake);
 
         onAlarm();
     }
@@ -41,7 +46,7 @@ public class quest_main extends AppCompatActivity {
 
         AlarmManager alarmManager = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
 
-        Intent intent = new Intent(this, quest_alarm.class);
+        Intent intent = new Intent(this, Quest_Alarm.class);
         PendingIntent pIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
         //cal.getTimeInMillis()//
 
@@ -59,7 +64,7 @@ public class quest_main extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "알람 해제", Toast.LENGTH_SHORT).show();
         AlarmManager alarmManager = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
 
-        Intent Intent = new Intent(this, quest_alarm.class);
+        Intent Intent = new Intent(this, Quest_Alarm.class);
         PendingIntent pIntent = PendingIntent.getBroadcast(this, 0, Intent, 0);
         alarmManager.cancel(pIntent);
 
@@ -69,12 +74,12 @@ public class quest_main extends AppCompatActivity {
     }
 
     public void onButtonGPSClicked(View view) {
-        Intent intent = new Intent(quest_main.this, quest_gps.class);
+        Intent intent = new Intent(Quest_Main.this, Quest_Gps.class);
         startActivity(intent);
     }
 
     public void onButtonShakeClicked(View view) {
-        Intent intent = new Intent(quest_main.this, quest_shake.class);
+        Intent intent = new Intent(Quest_Main.this, Quest_Shake.class);
         startActivity(intent);
     }
 
@@ -92,7 +97,7 @@ public class quest_main extends AppCompatActivity {
 
     public void onNotificationGPS(){
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, quest_gps.class), PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, Quest_Gps.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setContentTitle("MyHeailngpet 미션도착!")
@@ -112,7 +117,7 @@ public class quest_main extends AppCompatActivity {
 
     public void onNotificationShake(){
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, quest_shake.class), PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, Quest_Shake.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setContentTitle("MyHeailngpet 미션도착!")
@@ -128,5 +133,16 @@ public class quest_main extends AppCompatActivity {
         Notification n = builder.build();
         nm.notify(0002, n);
 
+    }
+
+    public void gpsButton(){
+
+        onGPS.setEnabled(true);
+        onShake.setEnabled(false);
+    }
+
+    public void shakeButton(){
+        onGPS.setEnabled(false);
+        onShake.setEnabled(true);
     }
 }
