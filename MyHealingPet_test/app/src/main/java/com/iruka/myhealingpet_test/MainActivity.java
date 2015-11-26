@@ -38,6 +38,8 @@ public class MainActivity extends Activity {
         SQL.execSQL("insert or ignore into Pet values(null, 'level', 0);");
         SQL.execSQL("insert or ignore into Pet values(null, 'heart', 0);");
         SQL.execSQL("insert or ignore into Pet values(null, 'hungry', 100);");
+        db.updateData("hungry", 20);
+        db.updateData("heart", 30);
 
     }
 

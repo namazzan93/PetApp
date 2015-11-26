@@ -16,15 +16,15 @@ public class Pet_MenuBar extends Activity {
     private Button btnExit;
     private Button btn1, btn2, btn3, btn4, btn5;
     private View top;
-    public static int level;
-    public static int heart;
-    public static int hungry;
+    private Manager_DB db;
+
 
     protected void onCreate(Bundle saveIndstanceState) {
         super.onCreate(saveIndstanceState);
         setContentView(R.layout.pet_menubar_layout);
         Manager_Process.getInstance().addActivity(this);
         myMenu = Pet_MenuBar.this;
+        db = new Manager_DB(this.getApplication());
         setLayout();
         setClickListener(MenuListener);
         top.setOnClickListener(new View.OnClickListener() {
@@ -58,11 +58,6 @@ public class Pet_MenuBar extends Activity {
         @Override
         public void onClick(View view) {
             switch(view.getId()){
-                case R.id.button6:
-                    stopService(new Intent(getApplicationContext(), Pet_Service.class));
-                    Toast.makeText(getApplicationContext(), "삭제 버튼입니다.", Toast.LENGTH_SHORT).show();
-                    finish();
-                    break;
                 case R.id.button:
                     //Toast.makeText(getApplicationContext(), "버튼1 입니다.", Toast.LENGTH_SHORT).show();
                     Intent it = new Intent(getApplication(), Pet_Status.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -79,7 +74,13 @@ public class Pet_MenuBar extends Activity {
                     Toast.makeText(getApplicationContext(), "버튼4 입니다.", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.button5:
-                    Toast.makeText(getApplicationContext(), "버튼5 입니다.", Toast.LENGTH_SHORT).show();
+                    int hungry = db.selectValue("hungry");
+                    db.updateData("hungry", hungry + 30);
+                    break;
+                case R.id.button6:
+                    stopService(new Intent(getApplicationContext(), Pet_Service.class));
+                    Toast.makeText(getApplicationContext(), "삭제 버튼입니다.", Toast.LENGTH_SHORT).show();
+                    finish();
                     break;
             }
 
