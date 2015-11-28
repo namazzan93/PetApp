@@ -57,9 +57,6 @@ public class Pet_Service extends Service {
         private boolean isLeft = true;
         private LinearLayout txtView, txt_linearlayout;
         private TextView txt;
-        private String sMsg = "심심하다냥";
-        private String hungryMsg = "배고프다냥";
-
 
         //아무것도 안하는 제스쳐 리스너
         private GestureDetector.OnGestureListener mNullListener = new GestureDetector.OnGestureListener() {
@@ -192,7 +189,7 @@ public class Pet_Service extends Service {
                             }
 
                             if(hungry >= 30) {
-                                showMsg(sMsg);
+                                normalTalk();
                                 chatHead.setImageResource(R.drawable.frame_eye);
                                 mAni = (AnimationDrawable) chatHead.getDrawable();
                                 mAni.start();
@@ -206,7 +203,7 @@ public class Pet_Service extends Service {
                                 }, 1500);
                             }
                             else {
-                                showMsg(hungryMsg);
+                                hungryTalk();
                                 chatHead.setImageResource(R.drawable.frame_angry);
                                 mAni = (AnimationDrawable) chatHead.getDrawable();
                                 mAni.start();
@@ -453,6 +450,45 @@ public class Pet_Service extends Service {
             myHandler.postDelayed(myRunnable_text, 1000);
         }
 
+    }
+
+    private int randomNumber(int maxNum){
+        double rand = Math.random();
+        return (int)(rand % maxNum) + 1;
+    }
+
+    private void normalTalk(){
+        int ranNum = randomNumber(3);
+        String sMsg = "";
+        switch(ranNum){
+            case 1:
+                sMsg = "심심하다냥~";
+                break;
+            case 2:
+                sMsg = "집사, 어디가냐냥~";
+                break;
+            case 3:
+                sMsg = "놀아달라냥~";
+                break;
+        }
+        showMsg(sMsg);
+    }
+
+    private void hungryTalk(){
+        int ranNum = randomNumber(3);
+        String sMsg = "";
+        switch(ranNum){
+            case 1:
+                sMsg = "배고프다냥~";
+                break;
+            case 2:
+                sMsg = "밥 달라냥~";
+                break;
+            case 3:
+                sMsg = "화가 난다냥~";
+                break;
+        }
+        showMsg(sMsg);
     }
 
     Handler myHandler = new Handler();
