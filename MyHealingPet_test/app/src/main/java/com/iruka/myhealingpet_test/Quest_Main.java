@@ -83,6 +83,11 @@ public class Quest_Main extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onButtonCallClicked(View view) {
+        Intent intent = new Intent(Quest_Main.this, Quest_Call.class);
+        startActivity(intent);
+    }
+
     public void onButtonNotifiClicked(View view) {
         mRand = new Random();
         intQuestRand = mRand.nextInt(2);

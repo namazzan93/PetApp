@@ -38,8 +38,8 @@
         android:id="@+id/onNotification"
         android:onClick="onButtonNotifiClicked"
         android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/onShake"
-        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/onCall"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -63,6 +63,17 @@
         android:onClick="offButtonAlarmClicked"
         android:layout_below="@+id/onAlarm"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="call"
+        android:id="@+id/onCall"
+        android:onClick="onButtonCallClicked"
+        android:layout_gravity="right"
+        android:layout_above="@+id/onNotification"
+        android:layout_alignEnd="@+id/onShake"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>
