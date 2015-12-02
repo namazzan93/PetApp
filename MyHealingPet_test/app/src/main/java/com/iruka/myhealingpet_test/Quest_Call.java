@@ -1,7 +1,10 @@
 package com.iruka.myhealingpet_test;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -52,6 +55,11 @@ class sCallLog{
 
 
 public class Quest_Call extends Activity {
+    ListView listView;
+    Quest_Call_IconTextListAdapter adapter;
+
+    public static Context mContext;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,8 +104,7 @@ public class Quest_Call extends Activity {
         //result.append(sorted_map.get("0").name + "/" + sorted_map.get("0").number + "/"
         //        + sorted_map.get("0").count +"\n" );
 
-        ListView listView;
-        Quest_Call_IconTextListAdapter adapter;
+
 
         listView = (ListView) findViewById(R.id.listView);
         adapter = new Quest_Call_IconTextListAdapter(this);
@@ -113,30 +120,19 @@ public class Quest_Call extends Activity {
         }
 
         listView.setAdapter(adapter);
+    }
 
-        /*
-        // 새로 정의한 리스너로 객체를 만들어 설정
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+    public void questFinish(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(Quest_Call.this);
+        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Quest_Call_IconTextItem curItem = (Quest_Call_IconTextItem) adapter.getItem(position);
-                String[] curData = curItem.getData();
-
-                Toast.makeText(getApplicationContext(), "Selected : " + curData[0], Toast.LENGTH_LONG).show();
-
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();     //닫기
+                finish();
             }
         });
-
-        public static Object getKeyFromValue(Map hm, Object value) {
-            for (Object o : hm.keySet()) {
-                if (hm.get(o).equals(value)) {
-                    return o;
-                }
-            }
-            return null;
-        }
-        */
+        alert.setMessage("테스트 메세지");
+        alert.show();
     }
 }
 
