@@ -22,6 +22,8 @@ public class MainActivity extends Activity {
             mSplashDialog.dismiss();
             startService(new Intent(getApplicationContext(), Pet_Service.class));
             moveTaskToBack(true);
+            finish();
+            android.os.Process.killProcess(android.os.Process.myPid());
         }
     };
 
@@ -43,13 +45,10 @@ public class MainActivity extends Activity {
 
     }
 
-    public boolean isServiceRunningCheck() {
-        ActivityManager manager = (ActivityManager) this.getSystemService(Activity.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if ("com.app.sungtaehun.CHAT".equals(service.service.getClassName())) {
-                return true;
-            }
-        }
-        return false;
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        Manager_Process.getInstance().deleteActivity(this);
     }
 }
