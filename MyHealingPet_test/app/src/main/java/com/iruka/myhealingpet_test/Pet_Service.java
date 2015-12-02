@@ -453,8 +453,8 @@ public class Pet_Service extends Service {
     }
 
     private int randomNumber(int maxNum){
-        double rand = Math.random();
-        return (int)(rand % maxNum) + 1;
+        int rand = (int)((Math.random() * maxNum) + 1);
+        return rand;
     }
 
     private void normalTalk(){
