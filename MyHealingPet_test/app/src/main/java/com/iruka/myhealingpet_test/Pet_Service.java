@@ -52,6 +52,7 @@ public class Pet_Service extends Service {
         private int level = 0;
         private int hungry = 0;
         private int heart = 0;
+        private int mission1 = 0;
         public static Pet_Service myPet;
         private Point szWindow = new Point();
         private boolean isLeft = true;
@@ -171,6 +172,10 @@ public class Pet_Service extends Service {
                         mAni.start();
                         time_end = System.currentTimeMillis();
                         if((time_end - time_start) > 45 && (time_end - time_start) < 300) {
+                            if(mission1 < 10) {
+                                mission1++;
+                                db.updateData("mission1", mission1);
+                            }
                             cnt_heart++;
                             if(cnt_heart >= 3){
                                 cnt_heart = 0;
@@ -317,6 +322,7 @@ public class Pet_Service extends Service {
             level = db.selectValue("level");
             heart = db.selectValue("heart");
             hungry = db.selectValue("hungry");
+            mission1 = db.selectValue("mission1");
         }
 
 

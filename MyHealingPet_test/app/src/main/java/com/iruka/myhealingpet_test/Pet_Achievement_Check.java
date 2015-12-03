@@ -15,7 +15,7 @@ import android.widget.TextView;
  */
 public class Pet_Achievement_Check extends Dialog {
 
-    private Button achieve_btn;
+    private Button achieve_btn, back_btn;
     private ProgressBar achieve_progressbar;
     private TextView txtAchieveName, txtAchieveComnet, progress_txt;
     private Manager_DB db;
@@ -34,6 +34,13 @@ public class Pet_Achievement_Check extends Dialog {
         db = new Manager_DB(this.getContext());
 
         setLayout();
+
+        back_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
 
         switch(mission_number){
             case 0:
@@ -59,6 +66,7 @@ public class Pet_Achievement_Check extends Dialog {
         txtAchieveName = (TextView)findViewById(R.id.txtAchieveName);
         txtAchieveComnet = (TextView)findViewById(R.id.txtAchieveComent);
         progress_txt = (TextView)findViewById(R.id.progress_txt);
+        back_btn = (Button)findViewById(R.id.back_btn);
     }
 
     private void mission1(){
