@@ -76,6 +76,11 @@
             android:excludeFromRecents="true"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".Pet_Achievement"
+            android:finishOnTaskLaunch="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity android:name=".Quest_Main"
             android:finishOnTaskLaunch="true"
             android:excludeFromRecents="true"

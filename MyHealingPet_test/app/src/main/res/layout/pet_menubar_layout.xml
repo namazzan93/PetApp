@@ -30,22 +30,22 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="상태창"
-                android:id="@+id/button"
+                android:text="상 태"
+                android:id="@+id/btnstauts"
                 android:layout_weight="1"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="미션창"
-                android:id="@+id/button2"
+                android:text="미 션"
+                android:id="@+id/btnquest"
                 android:layout_weight="1"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button3"
+                android:text="상 점"
+                android:id="@+id/btnstore"
                 android:layout_weight="1"/>
 
         </LinearLayout>
@@ -60,22 +60,22 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Button"
-                android:id="@+id/button4"
+                android:text="업 적"
+                android:id="@+id/btnachieve"
                 android:layout_weight="1"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="먹이주기"
-                android:id="@+id/button5"
+                android:text="설 정"
+                android:id="@+id/btnoption"
                 android:layout_weight="1"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="종료"
-                android:id="@+id/button6"
+                android:text="종 료"
+                android:id="@+id/btnexit"
                 android:layout_weight="1"/>
         </LinearLayout>
     </LinearLayout>
