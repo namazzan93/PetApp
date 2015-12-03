@@ -2,7 +2,6 @@ package com.iruka.myhealingpet_test;
 
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -50,6 +49,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub
+
         super.onDestroy();
         Manager_Process.getInstance().deleteActivity(this);
     }
