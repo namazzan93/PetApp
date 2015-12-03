@@ -21,15 +21,23 @@ public class Quest_Alarm extends BroadcastReceiver {
         //Toast.makeText(context, "hi", Toast.LENGTH_LONG).show();
 
         mRand = new Random();
-        intQuestRand = mRand.nextInt(2);
+        intQuestRand = mRand.nextInt(3);
 
-
-        if (intQuestRand == 0) {
-            ((Quest_Main) Quest_Main.mContext).onNotificationGPS();
-            ((Quest_Main) Quest_Main.mContext).gpsButton();
-        } else {
-            ((Quest_Main) Quest_Main.mContext).onNotificationShake();
-            ((Quest_Main) Quest_Main.mContext).shakeButton();
+        switch(intQuestRand){
+            case 0:
+                ((Quest_Main) Quest_Main.mContext).onNotificationGPS();
+                ((Quest_Main) Quest_Main.mContext).gpsButton();
+                break;
+            case 1:
+                ((Quest_Main) Quest_Main.mContext).onNotificationShake();
+                ((Quest_Main) Quest_Main.mContext).shakeButton();
+                break;
+            case 2:
+                ((Quest_Main) Quest_Main.mContext).onNotificationCall();
+                ((Quest_Main) Quest_Main.mContext).callButton();
+                break;
+            default:
+                break;
         }
     }
 }
