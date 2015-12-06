@@ -22,6 +22,7 @@ public class Quest_Main extends AppCompatActivity {
     public int intQuestRand;
     private Button onGPS;
     private Button onShake;
+    private Button onCall;
     public static Context mContext;
 
     @Override
@@ -32,8 +33,9 @@ public class Quest_Main extends AppCompatActivity {
 
         onGPS = (Button) findViewById(R.id.onGPS);
         onShake = (Button) findViewById(R.id.onShake);
+        onCall = (Button) findViewById(R.id.onCall);
 
-        onAlarm();
+        //onAlarm();
     }
 
     public void onAlarm() {
@@ -55,13 +57,8 @@ public class Quest_Main extends AppCompatActivity {
         //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000 * 60 * 60, pIntent);
     }
 
-
-    public void onButtonAlarmClicked(View view){
-       onAlarm();
-    }
-
-    public void offButtonAlarmClicked(View view){
-        Toast.makeText(getApplicationContext(), "알람 해제", Toast.LENGTH_SHORT).show();
+    public void offAlarm(){
+        //Toast.makeText(getApplicationContext(), "알람 해제", Toast.LENGTH_SHORT).show();
         AlarmManager alarmManager = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
 
         Intent Intent = new Intent(this, Quest_Alarm.class);
@@ -71,6 +68,14 @@ public class Quest_Main extends AppCompatActivity {
         // 주석을 풀면 먼저 실행되는 알람이 있을 경우, 제거하고
         // 새로 알람을 실행하게 된다. 상황에 따라 유용하게 사용 할 수 있다.
 //      alarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 3000, pIntent);
+    }
+
+    public void onButtonAlarmClicked(View view){
+        onAlarm();
+    }
+
+    public void offButtonAlarmClicked(View view){
+        offAlarm();
     }
 
     public void onButtonGPSClicked(View view) {
@@ -83,15 +88,27 @@ public class Quest_Main extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onButtonCallClicked(View view) {
+        Intent intent = new Intent(Quest_Main.this, Quest_Call.class);
+        startActivity(intent);
+    }
+
     public void onButtonNotifiClicked(View view) {
         mRand = new Random();
-        intQuestRand = mRand.nextInt(2);
+        intQuestRand = mRand.nextInt(3);
 
-        if (intQuestRand == 0) {
-            onNotificationGPS();
-        }
-        else {
-            onNotificationShake();
+        switch (intQuestRand){
+            case 0:
+                onNotificationGPS();
+                break;
+            case 1:
+                onNotificationShake();
+                break;
+            case 2:
+                onNotificationCall();
+                break;
+            default:
+                break;
         }
     }
 
@@ -135,14 +152,42 @@ public class Quest_Main extends AppCompatActivity {
 
     }
 
+    public void onNotificationCall(){
+        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, Quest_Call.class), PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setContentTitle("MyHeailngpet 미션도착!")
+                .setContentText("친한친구에게 전화를 걸어요!!")
+                .setTicker("MyHeailngpet 미션도착!")
+                .setSmallIcon(R.drawable.bank)
+                        //.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.bank))
+                .setContentIntent(contentIntent)
+                .setAutoCancel(true)
+                .setWhen(System.currentTimeMillis())
+                .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE | Notification.DEFAULT_LIGHTS);
+
+        Notification n = builder.build();
+        nm.notify(0003, n);
+
+    }
+
     public void gpsButton(){
 
         onGPS.setEnabled(true);
         onShake.setEnabled(false);
+        onCall.setEnabled(false);
     }
 
     public void shakeButton(){
         onGPS.setEnabled(false);
         onShake.setEnabled(true);
+        onCall.setEnabled(false);
+    }
+
+    public void callButton(){
+        onGPS.setEnabled(false);
+        onShake.setEnabled(false);
+        onCall.setEnabled(true);
     }
 }
