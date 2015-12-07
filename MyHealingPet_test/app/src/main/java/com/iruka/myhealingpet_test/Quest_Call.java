@@ -113,10 +113,14 @@ public class Quest_Call extends Activity {
 
         Iterator<sCallLog> it = sorted_map.keySet().iterator(); // Iterator 로 Key들을 뽑아낸다
         sCallLog obj;
+        int count = 0;
+
         while (it.hasNext()) {  // Key를 뽑아낸 Iterator 를 돌려가며
             obj = it.next(); // Kef 를 하나씩 뽑아;
-
-                adapter.addItem(new Quest_Call_IconTextItem(res.getDrawable(R.drawable.call), obj.getName(), obj.getNumber(), logVector.get(obj) ));
+            adapter.addItem(new Quest_Call_IconTextItem(res.getDrawable(R.drawable.call), obj.getName(), obj.getNumber(), logVector.get(obj) ));
+            count++;
+            if(count == 3)
+                break;
         }
 
         listView.setAdapter(adapter);
