@@ -58,14 +58,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="업적완료"
-                android:id="@+id/achieve_btn" />
+                android:id="@+id/achieve_btn"
+                android:background="@drawable/menu_button"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="뒤로가기"
-                android:id="@+id/back_btn" />
+                android:id="@+id/back_btn"
+                android:background="@drawable/menu_button"/>
         </LinearLayout>
 
     </LinearLayout>

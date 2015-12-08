@@ -32,21 +32,24 @@
                 android:layout_height="wrap_content"
                 android:text="상 태"
                 android:id="@+id/btnstauts"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@drawable/menu_button"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="미 션"
                 android:id="@+id/btnquest"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@drawable/menu_button"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="상 점"
                 android:id="@+id/btnstore"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@drawable/menu_button"/>
 
         </LinearLayout>
 
@@ -62,21 +65,24 @@
                 android:layout_height="wrap_content"
                 android:text="업 적"
                 android:id="@+id/btnachieve"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@drawable/menu_button"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="설 정"
                 android:id="@+id/btnoption"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@drawable/menu_button"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="종 료"
                 android:id="@+id/btnexit"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@drawable/menu_button"/>
         </LinearLayout>
     </LinearLayout>
 
