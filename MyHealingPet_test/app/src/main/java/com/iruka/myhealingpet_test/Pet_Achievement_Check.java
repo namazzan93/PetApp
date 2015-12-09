@@ -20,6 +20,7 @@ public class Pet_Achievement_Check extends Dialog {
     private TextView txtAchieveName, txtAchieveComnet, progress_txt;
     private Manager_DB db;
     private int mission_number;
+    private View.OnClickListener checkListener;
     @Override
     protected void onCreate(Bundle saveIndstanceState){
         super.onCreate(saveIndstanceState);
@@ -35,12 +36,13 @@ public class Pet_Achievement_Check extends Dialog {
 
         setLayout();
 
-        back_btn.setOnClickListener(new View.OnClickListener(){
+        back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dismiss();
             }
         });
+        achieve_btn.setOnClickListener(checkListener);
 
         switch(mission_number){
             case 0:
@@ -55,9 +57,10 @@ public class Pet_Achievement_Check extends Dialog {
         }
     }
 
-    public Pet_Achievement_Check(Context context, int position){
+    public Pet_Achievement_Check(Context context, int position, View.OnClickListener checkListener){
         super(context, android.R.style.Theme_Translucent_NoTitleBar);
         mission_number = position;
+        this.checkListener = checkListener;
     }
 
     private void setLayout(){
