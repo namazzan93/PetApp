@@ -74,7 +74,11 @@ public class Pet_MenuBar extends Activity {
                 case R.id.btnoption:
                     break;
                 case R.id.btnexit:
-                    //((Quest_Main) Quest_Main.mContext).offAlarm();
+                    if(Quest_Main.QuestCall == true) {
+                        ((Quest_Main) Quest_Main.mContext).offAlarm();
+                    }
+                    //if (((Quest_Main) Quest_Main.mContext).isQuestCall() == true )
+
                     stopService(new Intent(getApplicationContext(), Pet_Service.class));
                     Toast.makeText(getApplicationContext(), "삭제 버튼입니다.", Toast.LENGTH_SHORT).show();
                     finish();

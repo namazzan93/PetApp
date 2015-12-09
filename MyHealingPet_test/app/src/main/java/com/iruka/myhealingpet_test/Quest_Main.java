@@ -25,11 +25,13 @@ public class Quest_Main extends AppCompatActivity {
     private Button onCall;
     public static Context mContext;
 
+    static boolean QuestCall = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quest_main_layout);
-        mContext=this;
+        mContext = this;
 
         onGPS = (Button) findViewById(R.id.onGPS);
         onShake = (Button) findViewById(R.id.onShake);
@@ -39,6 +41,8 @@ public class Quest_Main extends AppCompatActivity {
     }
 
     public void onAlarm() {
+        QuestCall = true;
+
         Toast.makeText(getApplicationContext(), "알람 설정", Toast.LENGTH_SHORT).show();
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.HOUR_OF_DAY, 1);
@@ -58,6 +62,8 @@ public class Quest_Main extends AppCompatActivity {
     }
 
     public void offAlarm(){
+        QuestCall = false;
+
         //Toast.makeText(getApplicationContext(), "알람 해제", Toast.LENGTH_SHORT).show();
         AlarmManager alarmManager = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
 
@@ -68,6 +74,15 @@ public class Quest_Main extends AppCompatActivity {
         // 주석을 풀면 먼저 실행되는 알람이 있을 경우, 제거하고
         // 새로 알람을 실행하게 된다. 상황에 따라 유용하게 사용 할 수 있다.
 //      alarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 3000, pIntent);
+    }
+
+    public boolean isQuestCall() {
+        return QuestCall;
+    }
+
+    public void setQuestCall(boolean _tf)
+    {
+        QuestCall = _tf;
     }
 
     public void onButtonAlarmClicked(View view){

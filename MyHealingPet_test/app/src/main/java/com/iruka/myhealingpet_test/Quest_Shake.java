@@ -11,7 +11,8 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.util.Random;
 
 /**
  * Created by iRuKa on 2015-11-18.
@@ -39,6 +40,10 @@ public class Quest_Shake extends Activity implements SensorEventListener {
 
     private PowerManager pm; // 조명 유지
     private PowerManager.WakeLock wl; // 조명 유지
+
+    Random mRand;
+    private int intSahkeRand;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +53,11 @@ public class Quest_Shake extends Activity implements SensorEventListener {
 
         setContentView(R.layout.quest_shake_layout);
 
+        mRand = new Random();
+        intSahkeRand = mRand.nextInt(10) + 10;
 
+        TextView maxText = (TextView)findViewById(R.id.maxTextView);
+        maxText.setText(Integer.toString(intSahkeRand));
 
         // 조명 유지
         pm= (PowerManager)getSystemService(Context.POWER_SERVICE);
@@ -100,8 +109,8 @@ public class Quest_Shake extends Activity implements SensorEventListener {
                     counttext.setText(Integer.toString(++count));
 
 
-                    if(count >= 10){
-                        Toast.makeText(this, "10번이상 흔듬!!", Toast.LENGTH_SHORT).show();
+                    if(count >= intSahkeRand){
+                        //Toast.makeText(this, "10번이상 흔듬!!", Toast.LENGTH_SHORT).show();
                         questFinish();
                     }
                     //else
