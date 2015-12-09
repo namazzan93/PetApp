@@ -5,12 +5,12 @@ import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.CallLog;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -56,7 +56,10 @@ class sCallLog{
 
 public class Quest_Call extends Activity {
     ListView listView;
-    Quest_Call_IconTextListAdapter adapter;
+    private ArrayList<Custom_List_Data> Array_Data;
+    private Custom_List_Data data;
+    private Quest_Call_Adapter adapter;
+
 
     public static Context mContext;
 
@@ -94,22 +97,14 @@ public class Quest_Call extends Activity {
                 Integer count = logVector.get(a);
                 logVector.put(a, count+1);
             } else {
-                logVector.put(a, 0);
+                logVector.put(a, 1);
             }
         }
         cursor.close();
 
         sorted_map.putAll(logVector);
 
-        //result.append(sorted_map.get("0").name + "/" + sorted_map.get("0").number + "/"
-        //        + sorted_map.get("0").count +"\n" );
-
-
-
-        listView = (ListView) findViewById(R.id.listView);
-        adapter = new Quest_Call_IconTextListAdapter(this);
-
-        Resources res = getResources();
+        Array_Data = new ArrayList<Custom_List_Data>();
 
         Iterator<sCallLog> it = sorted_map.keySet().iterator(); // Iterator 로 Key들을 뽑아낸다
         sCallLog obj;
@@ -117,13 +112,16 @@ public class Quest_Call extends Activity {
 
         while (it.hasNext()) {  // Key를 뽑아낸 Iterator 를 돌려가며
             obj = it.next(); // Kef 를 하나씩 뽑아;
-            adapter.addItem(new Quest_Call_IconTextItem(res.getDrawable(R.drawable.call), obj.getName(), obj.getNumber(), logVector.get(obj) ));
-            count++;
+            data = new Custom_List_Data(R.drawable.call, obj.getName(), obj.getNumber(), logVector.get(obj).toString());
+            Array_Data.add(data);
             if(count == 3)
                 break;
         }
 
-        listView.setAdapter(adapter);
+        ListView custom_list = (ListView) findViewById(R.id.listView);
+        adapter = new Quest_Call_Adapter(this, android.R.layout.simple_list_item_1, Array_Data);
+        custom_list.setAdapter(adapter);
+
     }
 
     public void questFinish(){
