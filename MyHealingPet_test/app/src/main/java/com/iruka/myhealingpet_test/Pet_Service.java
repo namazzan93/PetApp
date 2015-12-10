@@ -444,11 +444,13 @@ public class Pet_Service extends Service {
                 param_txt.x = param_chathead.x + chatHead.getWidth() - 100;
                 param_txt.y = param_chathead.y - 200;
 
+                txtView.setBackgroundResource(R.drawable.speech_bubble_right);
                 txt_linearlayout.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
             } else {
                 param_txt.x = param_chathead.x - szWindow.x / 2 + 100;
                 param_txt.y = param_chathead.y - 200;
 
+                txtView.setBackgroundResource(R.drawable.speech_bubble_left);
                 txt_linearlayout.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
             }
 

@@ -90,7 +90,6 @@ public class Pet_MenuBar extends Activity {
                     //if (((Quest_Main) Quest_Main.mContext).isQuestCall() == true )
 
                     stopService(new Intent(getApplicationContext(), Pet_Service.class));
-                    Toast.makeText(getApplicationContext(), "삭제 버튼입니다.", Toast.LENGTH_SHORT).show();
                     finish();
                     break;
             }

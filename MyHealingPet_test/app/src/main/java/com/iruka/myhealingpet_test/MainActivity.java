@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
         SQL.execSQL("insert or ignore into Pet values(null, 'mission1', 0);");
         SQL.execSQL("insert or ignore into Pet values(null, 'mission2', 0);");
         SQL.execSQL("insert or ignore into Pet values(null, 'mission3', 0);");
-        db.updateData("hungry", 20);
+        db.updateData("hungry", 70);
         db.updateData("heart", 30);
 
     }
