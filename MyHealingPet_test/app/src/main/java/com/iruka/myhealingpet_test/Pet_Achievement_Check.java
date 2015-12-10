@@ -13,6 +13,12 @@ import android.widget.TextView;
 /**
  * Created by Sung TaeHun on 2015-12-03.
  */
+
+/*
+    업적 관리 다이얼로그
+    업적리스트에서 하나의 업적을 클릭시 해당 업적에 대한 상세 설명과 진행 상태를 보여주는 다이얼로그이다.
+    업적 완료에 대한 요건이 충족되면 업적 완료 버튼을 활성화시킨다.
+ */
 public class Pet_Achievement_Check extends Dialog {
 
     private Button achieve_btn, back_btn;
@@ -80,6 +86,9 @@ public class Pet_Achievement_Check extends Dialog {
         int mCount = db.selectValue("mission1");
         achieve_progressbar.setProgress(mCount);
         progress_txt.setText( mCount + "/10");
+
+        if(mCount == 10) achieve_btn.setEnabled(true);
+        else achieve_btn.setEnabled(false);
     }
 
     private void mission2(){
@@ -90,6 +99,7 @@ public class Pet_Achievement_Check extends Dialog {
         //int mCount = db.selectValue("mission2");
         achieve_progressbar.setProgress(0);
         progress_txt.setText( 0 + "/10");
+        achieve_btn.setEnabled(false);
     }
 
     private void mission3(){
@@ -100,5 +110,7 @@ public class Pet_Achievement_Check extends Dialog {
         int mCount = db.selectValue("mission3");
         achieve_progressbar.setProgress(mCount);
         progress_txt.setText( mCount + "/10");
+        if(mCount == 10) achieve_btn.setEnabled(true);
+        else achieve_btn.setEnabled(false);
     }
 }

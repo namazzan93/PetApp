@@ -14,6 +14,11 @@ import java.util.ArrayList;
 /**
  * Created by Sung TaeHun on 2015-12-02.
  */
+
+/*
+    업적 클래스
+    2개의 리스트뷰를 사용한다. 하나는 업적을 보여준다. 다른 하나는 업적 완료시 이를 보여준다.
+ */
 public class Pet_Achievement extends Activity {
     private ArrayList<String> mArrayList = new ArrayList<String>();
     private ArrayList<String> mCompleteList = new ArrayList<String>();
@@ -36,9 +41,13 @@ public class Pet_Achievement extends Activity {
         mArrayList.add("하나로 만족 못하는 나");
         mArrayList.add("너가 먹는 모습만 봐도 배불러");
 
+
         mCompleteList.add("");
         mCompleteList.add("");
         mCompleteList.add("");
+        for(int i = 0; i < 3; ++i){
+            if(db.selectValue("mission" + (i + 1)) >= 11) mCompleteList.set(i, "완료");
+        }
 
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mArrayList);
         complete_adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, mCompleteList);
@@ -56,9 +65,16 @@ public class Pet_Achievement extends Activity {
         @Override
         public void onClick(View view) {
             for(int i = 0; i < 3; ++i){
-                if(db.selectValue("mission" + (i + 1)) >= 10) mCompleteList.set(i, "완료");
+                int temp = db.selectValue("mission" + (i + 1));
+                if(temp >= 10){
+                    mCompleteList.set(i, "완료");
+                    ++temp;
+                    db.updateData("mission"+(i + 1), temp);
+                }
+
             }
             complete_adapter.notifyDataSetChanged();
+            mCheck.dismiss();
         }
     };
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {

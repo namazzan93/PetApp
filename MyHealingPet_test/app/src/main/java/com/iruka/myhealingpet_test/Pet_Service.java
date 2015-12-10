@@ -10,8 +10,6 @@ import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.IBinder;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,8 +17,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -28,6 +24,12 @@ import android.widget.TextView;
 
 /**
  * Created by Sung TaeHun on 2015-10-13.
+ */
+
+/*
+    펫을 항상 최상단에 띄우는 서비스
+    펫의 상태와 펫에 대한 이벤트에 따른 애니메이션과 이미지 그리고 메시지를 실행한다.
+    펫에 대한 시간에 따른 포만감을 감소시키고 반복적인 탭을 통하여 애정도와 성장치를 증가시킨다.
  */
 public class Pet_Service extends Service {
         private WindowManager windowManager;
@@ -168,7 +170,7 @@ public class Pet_Service extends Service {
 
                         resetPosition(x_start);
 
-                        chatHead.setImageResource(R.drawable.normal1);
+                        chatHead.setImageResource(R.drawable.bell_cat);
                         mAni.start();
                         time_end = System.currentTimeMillis();
                         if((time_end - time_start) > 45 && (time_end - time_start) < 300) {
@@ -195,13 +197,13 @@ public class Pet_Service extends Service {
 
                             if(hungry >= 30) {
                                 normalTalk();
-                                chatHead.setImageResource(R.drawable.frame_eye);
+                                chatHead.setImageResource(R.drawable.frame_normal_bell_happy);
                                 mAni = (AnimationDrawable) chatHead.getDrawable();
                                 mAni.start();
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        chatHead.setImageResource(R.drawable.frame_normal);
+                                        chatHead.setImageResource(R.drawable.frame_normal_bell);
                                         mAni = (AnimationDrawable) chatHead.getDrawable();
                                         mAni.start();
                                     }
@@ -209,13 +211,13 @@ public class Pet_Service extends Service {
                             }
                             else {
                                 hungryTalk();
-                                chatHead.setImageResource(R.drawable.frame_angry);
+                                chatHead.setImageResource(R.drawable.frame_normal_bell_angry);
                                 mAni = (AnimationDrawable) chatHead.getDrawable();
                                 mAni.start();
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        chatHead.setImageResource(R.drawable.frame_normal);
+                                        chatHead.setImageResource(R.drawable.frame_normal_bell);
                                         mAni = (AnimationDrawable) chatHead.getDrawable();
                                         mAni.start();
                                     }
@@ -247,7 +249,7 @@ public class Pet_Service extends Service {
             chatHeadView = (RelativeLayout) inflater.inflate(R.layout.pet_service_layout, null);
             chatHead = (ImageView)chatHeadView.findViewById(R.id.pet_img);
             chatHeadView.setOnTouchListener(mViewTouchListener);
-            chatHead.setImageResource(R.drawable.frame_normal);
+            chatHead.setImageResource(R.drawable.frame_normal_bell);
             mAni = (AnimationDrawable)chatHead.getDrawable();
             mDoubleTapGesture = new GestureDetector(this, mNullListener);    //더블탭 제스쳐 생성
             mDoubleTapGesture.setOnDoubleTapListener(mDoubleTapListener);        //더블 탭 리스너 등록

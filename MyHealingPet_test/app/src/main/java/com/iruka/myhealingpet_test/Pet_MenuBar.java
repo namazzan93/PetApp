@@ -10,6 +10,14 @@ import android.widget.Toast;
 /**
  * Created by Sung TaeHun on 2015-10-30.
  */
+
+/*
+    메뉴 클래스
+    펫을 더블탭하여 나타나는 메뉴 클래스
+    상태, 미션, 상점, 업적, 설정, 종료 의 총 6가지 버튼을 가지고 있다.
+    각 버튼에 따라 그에 해당하는 액티비티를 띄운다.
+    종료 버튼은 어플리케이션을 종료시킨다.
+ */
 public class Pet_MenuBar extends Activity {
     public static boolean MenuActive = false;
     public static Pet_MenuBar myMenu;

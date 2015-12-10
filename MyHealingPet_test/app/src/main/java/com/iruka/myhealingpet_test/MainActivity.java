@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-
+// 메인엑티비티, 처음 어플리케이션 실행 시 수행
+// 로딩화면을 띄운다.
+// 로딩화면이 사라지면 DB 데이터를 삽입하고 펫을 화면에 띄운다.
+// 그리고 메인엑티비티를 강제 종료 시킨다.
 public class MainActivity extends Activity {
 
     private SplashDialog mSplashDialog;
@@ -40,6 +43,7 @@ public class MainActivity extends Activity {
         SQL.execSQL("insert or ignore into Pet values(null, 'heart', 0);");
         SQL.execSQL("insert or ignore into Pet values(null, 'hungry', 100);");
         SQL.execSQL("insert or ignore into Pet values(null, 'mission1', 0);");
+        SQL.execSQL("insert or ignore into Pet values(null, 'mission2', 0);");
         SQL.execSQL("insert or ignore into Pet values(null, 'mission3', 0);");
         db.updateData("hungry", 20);
         db.updateData("heart", 30);

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">
+    <item android:drawable="@drawable/bell_cat" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_tail1" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_eye1" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_tail2" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_tail3" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_eye2" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_tail4" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_tail3" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_eye3" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_tail2" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_eye2" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_tail1" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_eye1" android:duration="250" ></item>
+    <item android:drawable="@drawable/bell_cat" android:duration="100" ></item>
+</animation-list>

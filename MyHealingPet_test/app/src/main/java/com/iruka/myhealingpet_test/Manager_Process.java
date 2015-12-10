@@ -7,6 +7,13 @@ import java.util.ArrayList;
 /**
  * Created by Sung TaeHun on 2015-11-24.
  */
+
+/*
+    액티비티를 관리하는 클래스
+    액티비티가 생성되면 이를 배열에 저장하고 종료되면 이를 배열에서 삭제하여 이를 관리한다.
+    생성된 액티비티를 저장한 배열을 통해서 모든 액티비티를 한 꺼번에 종료시켜 어플리케이션을 종료 시킨다.
+ */
+
 public class Manager_Process {
     private static Manager_Process instance = null;
     private ArrayList<Activity> mActivityArr;
@@ -48,5 +55,6 @@ public class Manager_Process {
 
     public void allEndActivity(){
         for(Activity activity:mActivityArr) activity.finish();
+        mActivityArr.clear();
     }
 }
