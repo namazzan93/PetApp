@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
-    <!-- 일반 권한 설정 -->
+    <!-- 일반 권한 설정<receiver android:name=".Quest_Gps_Alarm2"> </receiver> -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -89,7 +89,7 @@
             android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".Quest_Gps"
             android:theme="@style/Theme.AppCompat"/>
-        <receiver android:name=".Quest_Gps_Alarm"> </receiver>
+
         <activity android:name=".Quest_Shake"> </activity>
         <activity android:name=".Quest_Call"> </activity>
         <receiver android:name=".Quest_Alarm"> </receiver>

@@ -2,9 +2,11 @@ package com.iruka.myhealingpet_test;
 
 import android.app.AlertDialog;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -45,7 +47,7 @@ public class Quest_Gps extends ActionBarActivity {
     private SensorManager mSensorManager;
 
     private LocationManager mLocationManager;
-    private Quest_Gps_Alarm mIntentReceiver;
+    private Quest_Gps_Receive mIntentReceiver;
 
     public static Context mContext;
 
@@ -54,8 +56,8 @@ public class Quest_Gps extends ActionBarActivity {
     ArrayList mPendingIntentList;
 
     String intentKey = "Proximity";
-    static double targetlatitude = 37.449392;
-    static double targetlongitude = 126.655757;
+    static double targetlatitude;// = 37.449392;
+    static double targetlongitude;// = 126.655757;
     static Double latitude;
     static Double longitude;
 
@@ -66,7 +68,7 @@ public class Quest_Gps extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quest_gps_layout);
 
-        mContext=this;
+        mContext = this;
         // 메인 레이아웃 객체 참조
         mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
 
@@ -77,7 +79,7 @@ public class Quest_Gps extends ActionBarActivity {
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         mPendingIntentList = new ArrayList();
-
+        /*
         // 버튼 이벤트 처리
         Button stopBtn = (Button) findViewById(R.id.stopBtn);
         stopBtn.setOnClickListener(new View.OnClickListener() {
@@ -88,38 +90,15 @@ public class Quest_Gps extends ActionBarActivity {
                 marker.remove();
             }
         });
-
+        */
         Button targetBtn1 = (Button) findViewById(R.id.targetBtn1);
         targetBtn1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                targetlatitude = 37.446138;
-                targetlongitude = 126.6600345;
+                //targetlatitude = 37.446138;
+                //targetlongitude = 126.6600345;
 
-                //targetlatitude = 37.450603;
-                ///targetlongitude = 126.657326;
-
-                int countTargets = 1;
-                register(1001, targetlatitude, targetlongitude, 100, -1);//위도 경도 반경 미터 무제한대기
-
-                TextView textView01 = (TextView) findViewById(R.id.textView01);
-                textView01.setText("목표 : " + targetlatitude + ", " + targetlongitude);
-
-                // 수신자 객체 생성하여 등록
-                mIntentReceiver = new Quest_Gps_Alarm(intentKey);
-                registerReceiver(mIntentReceiver, mIntentReceiver.getFilter());
-
-                Toast.makeText(getApplicationContext(), countTargets + "개 지점에 대한 근접 리스너 등록", Toast.LENGTH_LONG).show();
-
-                marker = map.addMarker(new MarkerOptions().position(new LatLng(targetlatitude, targetlongitude)).alpha(0.8f).title("도착지"));
-
-            }
-        });
-        /*
-        Button targetBtn2 = (Button) findViewById(R.id.targetBtn2);
-        targetBtn2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                targetlatitude = 37.451396;
-                targetlongitude = 126.655848;
+                targetlatitude = 37.450603;
+                targetlongitude = 126.657326;
 
                 int countTargets = 1;
                 register(1001, targetlatitude, targetlongitude, 100, -1);//위도 경도 반경 미터 무제한대기
@@ -128,7 +107,7 @@ public class Quest_Gps extends ActionBarActivity {
                 textView01.setText("목표 : " + targetlatitude + ", " + targetlongitude);
 
                 // 수신자 객체 생성하여 등록
-                mIntentReceiver = new Quest_Gps_Alarm(intentKey);
+                mIntentReceiver = new Quest_Gps_Receive(intentKey);
                 registerReceiver(mIntentReceiver, mIntentReceiver.getFilter());
 
                 Toast.makeText(getApplicationContext(), countTargets + "개 지점에 대한 근접 리스너 등록", Toast.LENGTH_LONG).show();
@@ -138,29 +117,6 @@ public class Quest_Gps extends ActionBarActivity {
             }
         });
 
-        Button targetBtn3 = (Button) findViewById(R.id.targetBtn3);
-        targetBtn3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                targetlatitude = 37.449235;
-                targetlongitude = 126.655855;
-
-                int countTargets = 1;
-                register(1001, targetlatitude, targetlongitude, 100, -1);//위도 경도 반경 미터 무제한대기
-
-                TextView textView01 = (TextView) findViewById(R.id.textView01);
-                textView01.setText("목표 : " + targetlatitude + ", " + targetlongitude);
-
-                // 수신자 객체 생성하여 등록
-                mIntentReceiver = new Quest_Gps_Alarm(intentKey);
-                registerReceiver(mIntentReceiver, mIntentReceiver.getFilter());
-
-                Toast.makeText(getApplicationContext(), countTargets + "개 지점에 대한 근접 리스너 등록", Toast.LENGTH_LONG).show();
-
-                marker = map.addMarker(new MarkerOptions().position(new LatLng(targetlatitude, targetlongitude)).alpha(0.8f).title("도착지"));
-
-            }
-        });
-        */
         // 위치 확인하여 위치 표시 시작
         startLocationService();
     }
@@ -215,7 +171,7 @@ public class Quest_Gps extends ActionBarActivity {
             latitude = location.getLatitude();
             longitude = location.getLongitude();
 
-            String msg = "Latitude : "+ latitude + "\nLongitude:"+ longitude;
+            String msg = "Latitude : " + latitude + "\nLongitude:" + longitude;
             Log.i("GPSLocationService", msg);
 
             // 현재 위치의 지도를 보여주기 위해 정의한 메소드 호출
@@ -225,11 +181,14 @@ public class Quest_Gps extends ActionBarActivity {
             textView02.setText("현재 : " + latitude + ", " + longitude);
         }
 
-        public void onProviderDisabled(String provider) {        }
+        public void onProviderDisabled(String provider) {
+        }
 
-        public void onProviderEnabled(String provider) {        }
+        public void onProviderEnabled(String provider) {
+        }
 
-        public void onStatusChanged(String provider, int status, Bundle extras) {        }
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+        }
 
     }
 
@@ -248,6 +207,7 @@ public class Quest_Gps extends ActionBarActivity {
 
     private final SensorEventListener mListener = new SensorEventListener() {
         private int iOrientation = -1;
+
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }
 
@@ -273,9 +233,14 @@ public class Quest_Gps extends ActionBarActivity {
         mPendingIntentList.add(intent);
     }
 
-    public void onStart() { super.onStart(); }
+    public void onStart() {
+        super.onStart();
+    }
 
-    public void onStop() {super.onStop(); unregister(); }
+    public void onStop() {
+        super.onStop();
+        unregister();
+    }
 
     private void unregister() {
         if (mPendingIntentList != null) {
@@ -292,7 +257,7 @@ public class Quest_Gps extends ActionBarActivity {
         }
     }
 
-    public void questFinish(){
+    public void questFinish() {
         db = new Manager_DB(this.getApplication());
         int _level = db.selectValue("level");
         int _gold = db.selectValue("gold");
@@ -311,5 +276,44 @@ public class Quest_Gps extends ActionBarActivity {
         });
         alert.setMessage("테스트 메세지");
         alert.show();
+    }
+
+
+    private class Quest_Gps_Receive extends BroadcastReceiver {
+        private String mExpectedAction;
+        private Intent mLastReceivedIntent;
+
+        public Quest_Gps_Receive(String expectedAction) {
+            mExpectedAction = expectedAction;
+            mLastReceivedIntent = null;
+        }
+
+        public IntentFilter getFilter() {
+            IntentFilter filter = new IntentFilter(mExpectedAction);
+            return filter;
+        }
+
+        public void onReceive(Context context, Intent intent) {
+            if (intent != null) {
+                mLastReceivedIntent = intent;
+
+                int id = intent.getIntExtra("id", 0);
+                double latitude = intent.getDoubleExtra("latitude", 0.0D);
+                double longitude = intent.getDoubleExtra("longitude", 0.0D);
+                Log.d("!!!!", "!!!!!!!!!!!!!!!!!!!");
+                Toast.makeText(context, "근접한타겟 : " + id + ", " + latitude + ", " + longitude, Toast.LENGTH_LONG).show();
+
+                ((Quest_Gps) Quest_Gps.mContext).questFinish();
+            }
+        }
+
+        public Intent getLastReceivedIntent() {
+            return mLastReceivedIntent;
+        }
+
+        public void clearReceivedIntents() {
+            mLastReceivedIntent = null;
+        }
+
     }
 }

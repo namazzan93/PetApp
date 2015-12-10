@@ -29,7 +29,7 @@ public class Quest_Shake extends Activity implements SensorEventListener {
     private float lastZ;
 
     private float x, y, z;
-    private static final int SHAKE_THRESHOLD = 5000; // 작을 수록 느린 스피드에서도 감지를 한다.
+    private static final int SHAKE_THRESHOLD = 3000; // 작을 수록 느린 스피드에서도 감지를 한다.
 
     private static final int DATA_X = SensorManager.DATA_X;
     private static final int DATA_Y = SensorManager.DATA_Y;

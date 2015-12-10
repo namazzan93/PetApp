@@ -23,36 +23,9 @@
 
         <Button
             android:id="@+id/targetBtn1"
-            android:layout_width="53dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="집"
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/linearLayout"
-            android:layout_toEndOf="@+id/linearLayout" />
-
-        <Button
-            android:id="@+id/targetBtn2"
-            android:layout_width="66dp"
-            android:layout_height="wrap_content"
-            android:text="고냥이"
-            android:layout_alignBottom="@+id/targetBtn1"
-            android:layout_toRightOf="@+id/targetBtn1"
-            android:layout_toEndOf="@+id/targetBtn1" />
-
-        <Button
-            android:id="@+id/targetBtn3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="인경호"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <Button
-            android:id="@+id/stopBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="중지"
+            android:text="시작!"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/linearLayout"
             android:layout_toEndOf="@+id/linearLayout" />
