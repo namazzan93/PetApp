@@ -122,5 +122,6 @@
         <activity android:name = "LoginActivity"/>
         <activity android:name = "DataInOutActivity"/>
         <activity android:name = "SignUpActivity"/>
+        <activity android:name = ".StoreActivity"/>
     </application>
 </manifest>

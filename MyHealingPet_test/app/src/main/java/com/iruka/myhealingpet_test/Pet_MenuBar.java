@@ -77,6 +77,8 @@ public class Pet_MenuBar extends Activity {
                     }
                     break;
                 case R.id.btnstore:
+                    Intent store = new Intent(getApplication(), StoreActivity.class);
+                    startActivity(store);
                     break;
                 case R.id.btnachieve:
                     if(temp != 0) {
