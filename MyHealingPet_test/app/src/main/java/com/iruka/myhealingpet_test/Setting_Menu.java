@@ -1,7 +1,6 @@
 package com.iruka.myhealingpet_test;
 
 
-
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Intent;
@@ -16,7 +15,7 @@ import android.widget.Button;
  */
 public class Setting_Menu extends AppCompatActivity {
 
-    private Button btn_change_show, btn_hungry_show, btn_success_show, btn_egg, btn_cat;
+    private Button btn_change_show, btn_hungry_show, btn_success_show, btn_egg, btn_cat, btn_backup;
     private Manager_DB db;
 
     @Override
@@ -76,14 +75,22 @@ public class Setting_Menu extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
-    private void setLayout(){
-        btn_change_show = (Button)findViewById(R.id.btn_change_show);
-        btn_hungry_show = (Button)findViewById(R.id.btn_hungry_show);
-        btn_success_show = (Button)findViewById(R.id.btn_success_show);
-        btn_cat = (Button)findViewById(R.id.btn_cat);
-        btn_egg = (Button)findViewById(R.id.btn_egg);
+    public void onClickBackUpButton(View v) {
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+    }
+
+    private void setLayout() {
+        btn_change_show = (Button) findViewById(R.id.btn_change_show);
+        btn_hungry_show = (Button) findViewById(R.id.btn_hungry_show);
+        btn_success_show = (Button) findViewById(R.id.btn_success_show);
+        btn_cat = (Button) findViewById(R.id.btn_cat);
+        btn_egg = (Button) findViewById(R.id.btn_egg);
+        btn_backup = (Button) findViewById(R.id.btn_backup);
     }
 
 }

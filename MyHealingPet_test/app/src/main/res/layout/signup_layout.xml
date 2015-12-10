@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 로그인화면 -->
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="2"
+    android:paddingTop="50px">
+
+    <TableRow>
+        <TextView
+            android:text="@string/login"
+            android:padding="10px"
+            />
+        <EditText android:id="@+id/entryId"
+            android:layout_span="2"
+            android:padding="10px"
+            android:autoText="false"
+            />
+        <Button android:text="@string/dupCheck"
+            android:id="@+id/dupCheck"
+            android:onClick="onDupCheckButtonClicked" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:text="@string/pwd"
+            android:padding="10px"
+
+            />
+        <EditText android:id="@+id/pwd"
+            android:layout_span="2"
+            android:padding="10px"
+            android:autoText="false"
+            android:inputType="textPassword"
+            />
+    </TableRow>
+
+    <TableRow android:layout_marginTop = "20px">
+        <TextView
+            android:text="@string/pwdCheck"
+            android:padding="10px"
+            />
+        <EditText android:id="@+id/pwdCheck"
+            android:layout_span="2"
+            android:padding="10px"
+            android:autoText="false"
+            android:inputType="textPassword"
+            />
+    </TableRow>
+
+    <TableRow android:layout_marginTop = "15px">
+        <Button android:text="@string/confirm"
+            android:id="@+id/confirm"
+            android:onClick="onConfirmButtonClicked" />
+
+        <Button android:text="@string/cancel"
+            android:id="@+id/cancel"
+            android:onClick="onCancelButtonClicked" />
+    </TableRow>
+
+</TableLayout>
