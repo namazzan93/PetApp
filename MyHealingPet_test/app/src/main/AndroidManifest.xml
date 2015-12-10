@@ -108,5 +108,15 @@
                 <action android:name="ccom.iruka.myhealingpet_test.CHAT"/>
             </intent-filter>
         </service>
+        <service
+            android:name=".Egg_Service"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":service"
+            > <!-- 퍼미션 중요 -->
+            <intent-filter >
+                <action android:name="ccom.iruka.myhealingpet_test.EGG"/>
+            </intent-filter>
+        </service>
     </application>
 </manifest>

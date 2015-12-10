@@ -1,6 +1,7 @@
 package com.iruka.myhealingpet_test;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -24,16 +25,29 @@ public class Pet_Status extends Activity {
     private int hungry;
     private Manager_DB db;
     private SQLiteDatabase sql;
+    private Change_Dialog mChange_Dialog;
+    private View.OnClickListener startListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            mChange_Dialog.dismiss();
+            startService(new Intent(getApplicationContext(), Pet_Service.class));
+        }
+    };
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pet_status_layout);
         Manager_Process.getInstance().addActivity(this);
         setLayout();
-
+        mChange_Dialog = new Change_Dialog(this, startListener);
         db = new Manager_DB(this.getApplication());
 
         setDBDate();
+
+        if(db.selectValue("egg") == 0 && level == 100){
+            stopService(new Intent(getApplicationContext(), Egg_Service.class));
+            mChange_Dialog.show();
+        }
 
         pblevel.setMax(100);
         pbheart.setMax(100);

@@ -64,20 +64,25 @@ public class Pet_MenuBar extends Activity {
     private View.OnClickListener MenuListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            int temp = db.selectValue("egg");
             switch(view.getId()){
                 case R.id.btnstauts:
                     Intent it = new Intent(getApplication(), Pet_Status.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(it);
                     break;
                 case R.id.btnquest:
-                    Intent quest = new Intent(getApplication(), Quest_Main.class);
-                    startActivity(quest);
+                     if(temp != 0){
+                        Intent quest = new Intent(getApplication(), Quest_Main.class);
+                        startActivity(quest);
+                    }
                     break;
                 case R.id.btnstore:
                     break;
                 case R.id.btnachieve:
-                    Intent achieve = new Intent(getApplication(), Pet_Achievement.class);
-                    startActivity(achieve);
+                    if(temp != 0) {
+                        Intent achieve = new Intent(getApplication(), Pet_Achievement.class);
+                        startActivity(achieve);
+                    }
                     break;
                 case R.id.btnoption:
                     Intent setting = new Intent(getApplication(), Setting_Menu.class);
@@ -89,8 +94,14 @@ public class Pet_MenuBar extends Activity {
                     }
                     //if (((Quest_Main) Quest_Main.mContext).isQuestCall() == true )
 
-                    stopService(new Intent(getApplicationContext(), Pet_Service.class));
-                    finish();
+                    if(temp != 0) {
+                        stopService(new Intent(getApplicationContext(), Pet_Service.class));
+                        finish();
+                    }
+                    else{
+                        stopService(new Intent(getApplicationContext(), Egg_Service.class));
+                        finish();
+                    }
                     break;
             }
 

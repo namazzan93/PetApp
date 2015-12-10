@@ -15,14 +15,19 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
     private SplashDialog mSplashDialog;
-    private Toast toast;
     private Manager_DB db;
     private SQLiteDatabase SQL;
     private View.OnClickListener startListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             mSplashDialog.dismiss();
-            startService(new Intent(getApplicationContext(), Pet_Service.class));
+            int temp = db.selectValue("egg");
+            if(temp == 0){
+                startService(new Intent(getApplicationContext(), Egg_Service.class));
+            }
+            else{
+                startService(new Intent(getApplicationContext(), Pet_Service.class));
+            }
             moveTaskToBack(true);
             finish();
             android.os.Process.killProcess(android.os.Process.myPid());
@@ -39,14 +44,16 @@ public class MainActivity extends Activity {
         db = new Manager_DB(this.getApplication());
         SQL = db.getWritableDatabase();
         SQL.execSQL("insert or ignore into Pet values(null, 'level', 0);");
-        SQL.execSQL("insert or ignore into Pet values(null, 'heart', 0);");
+        SQL.execSQL("insert or ignore into Pet values(null, 'heart', 100);");
         SQL.execSQL("insert or ignore into Pet values(null, 'hungry', 100);");
+        SQL.execSQL("insert or ignore into Pet values(null, 'gold', 100);");
         SQL.execSQL("insert or ignore into Pet values(null, 'mission1', 0);");
         SQL.execSQL("insert or ignore into Pet values(null, 'mission2', 0);");
         SQL.execSQL("insert or ignore into Pet values(null, 'mission3', 0);");
-        db.updateData("hungry", 70);
-        db.updateData("heart", 30);
-
+        SQL.execSQL("insert or ignore into Pet values(null, 'egg', 0);");
+        db.updateData("egg", 1);
+        db.updateData("hungry", 100);
+        db.updateData("heart", 100);
     }
 
     @Override

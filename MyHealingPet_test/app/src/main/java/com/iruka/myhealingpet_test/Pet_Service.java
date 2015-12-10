@@ -115,7 +115,7 @@ public class Pet_Service extends Service {
 
                     case MotionEvent.ACTION_MOVE:
                         time_end = System.currentTimeMillis();
-                        if(time_end - time_start > 150) chatHead.setImageResource(R.drawable.drag);
+                        if(time_end - time_start > 150) chatHead.setImageResource(R.drawable.bell_drag);
 
                         int x_diff_move = x_cord - x_init_cord;
                         int y_diff_move = y_cord - y_init_cord;
