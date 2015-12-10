@@ -71,6 +71,7 @@ public class Pet_Achievement extends Activity {
                     db.updateData("mission"+(i + 1), temp);
                     int gold = db.selectValue("gold");
                     db.updateData("gold", gold + 200);
+                    Toast.makeText(getApplication(), "업적 완료", Toast.LENGTH_SHORT).show();
                 }
             }
             complete_adapter.notifyDataSetChanged();
