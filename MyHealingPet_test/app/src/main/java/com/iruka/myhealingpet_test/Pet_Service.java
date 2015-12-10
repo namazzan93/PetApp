@@ -265,6 +265,7 @@ public class Pet_Service extends Service {
                     while(true){
                         try{
                             Thread.sleep(10000);
+                            setDBDate();
                             if(hungry > 0) {
                                 hungry--;
                                 db.updateData("hungry", hungry);
