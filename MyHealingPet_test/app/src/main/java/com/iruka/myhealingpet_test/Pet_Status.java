@@ -30,6 +30,7 @@ public class Pet_Status extends Activity {
         @Override
         public void onClick(View v) {
             mChange_Dialog.dismiss();
+            db.updateData("egg", 1);
             startService(new Intent(getApplicationContext(), Pet_Service.class));
         }
     };
