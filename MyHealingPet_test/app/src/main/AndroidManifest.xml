@@ -93,6 +93,7 @@
         <activity android:name=".Quest_Shake"> </activity>
         <activity android:name=".Quest_Call"> </activity>
         <receiver android:name=".Quest_Alarm"> </receiver>
+        <activity android:name=".Setting_Menu"> </activity>
         <service
             android:name=".Pet_Service"
             android:enabled="true"

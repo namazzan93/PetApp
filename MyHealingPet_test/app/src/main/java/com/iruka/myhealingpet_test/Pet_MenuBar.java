@@ -80,6 +80,8 @@ public class Pet_MenuBar extends Activity {
                     startActivity(achieve);
                     break;
                 case R.id.btnoption:
+                    Intent setting = new Intent(getApplication(), Setting_Menu.class);
+                    startActivity(setting);
                     break;
                 case R.id.btnexit:
                     if(Quest_Main.QuestCall == true) {
