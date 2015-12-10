@@ -31,16 +31,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-
-/**
- * 현재 위치의 지도를 보여주고 그 위에 오버레이를 추가하는 방법에 대해 알 수 있습니다.
- * 내 위치 표시를 해 줍니다.
- * 방향 센서를 이용해 나침반을 화면에 표시합니다.
- *
- * 구글맵 v2를 사용하기 위한 여러 가지 권한이 있어야 합니다.
- * 매니페스트 파일 안에 있는 키 값을 PC에 맞는 것으로 새로 발급받아서 넣어야 합니다.
- *
- * @author Mike
+/*
+내 위치 지도 표시 및 목적지 지도표시 위치비교
+ */
+ /**
+ * Created by iRuKa on 2015-11-18.
  */
 public class Quest_Gps extends ActionBarActivity {
 

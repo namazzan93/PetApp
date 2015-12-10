@@ -7,6 +7,10 @@ import android.content.Intent;
 import java.util.Random;
 
 
+/*
+각 퀘스트의 알림을 받아 Notification을 주는 클래스
+ */
+
 /**
  * Created by iRuKa on 2015-11-18.
  */

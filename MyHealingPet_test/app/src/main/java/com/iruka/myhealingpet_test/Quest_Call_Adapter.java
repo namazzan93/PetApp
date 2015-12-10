@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/*
+리스트뷰를 뿌려주는 클래스
+ */
 /**
  * Created by iRuKa on 2015-12-09.
  */
@@ -62,8 +65,6 @@ public class Quest_Call_Adapter extends ArrayAdapter<Custom_List_Data>
             @Override
             public void onClick(View v) {
                 // 터치 시 해당 아이템 이름 출력
-                //Toast.makeText(fparent.getContext(), mItems.get(fposition).getData(0), Toast.LENGTH_SHORT).show();
-                //((Quest_Call) Quest_Call.mContext).call(mItems.get(position).getData(1));
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + fpView.GetNumberView().getText()));
                 m_Context.startActivity(intent);
 

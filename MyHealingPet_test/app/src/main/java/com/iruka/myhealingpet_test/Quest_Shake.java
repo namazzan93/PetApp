@@ -14,6 +14,9 @@ import android.widget.TextView;
 
 import java.util.Random;
 
+/*
+쉐이크 클래스
+ */
 /**
  * Created by iRuKa on 2015-11-18.
  */

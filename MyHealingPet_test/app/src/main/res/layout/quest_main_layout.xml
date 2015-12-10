@@ -18,7 +18,8 @@
         android:layout_marginTop="73dp"
         android:onClick="onButtonGPSClicked"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:enabled="false" />
 
     <Button
         android:layout_width="wrap_content"
@@ -29,7 +30,8 @@
         android:layout_gravity="right"
         android:layout_below="@+id/onGPS"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:enabled="false" />
 
     <Button
         android:layout_width="wrap_content"
@@ -40,7 +42,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="46dp"
         android:layout_below="@+id/onCall"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:enabled="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -52,7 +55,8 @@
         android:layout_marginTop="39dp"
         android:layout_below="@+id/onNotification"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:enabled="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -74,6 +78,7 @@
         android:layout_gravity="right"
         android:layout_below="@+id/onShake"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/onShake" />
+        android:layout_alignEnd="@+id/onShake"
+        android:enabled="false" />
 
 </RelativeLayout>

@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.widget.Toast;
 
+/*
+목적지 도착이 메시지출력
+ */
 /**
  * Created by iRuKa on 2015-11-24.
  */
 public class Quest_Gps_Alarm extends BroadcastReceiver{
-
-  //  private class TargetIntentReceiver  {
-
     private String mExpectedAction;
     private Intent mLastReceivedIntent;
 
@@ -26,12 +26,6 @@ public class Quest_Gps_Alarm extends BroadcastReceiver{
         return filter;
     }
 
-    /**
-     * 받았을 때 호출되는 메소드
-     *
-     * @param context
-     * @param intent
-     */
     public void onReceive(Context context, Intent intent) {
         if (intent != null) {
             mLastReceivedIntent = intent;

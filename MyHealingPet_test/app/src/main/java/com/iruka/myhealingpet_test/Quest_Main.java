@@ -16,6 +16,12 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Random;
 
+/*
+퀘스트 메인 클래스
+ */
+/**
+ * Created by iRuKa on 2015-11-18.
+ */
 public class Quest_Main extends AppCompatActivity {
 
     Random mRand;
@@ -76,14 +82,6 @@ public class Quest_Main extends AppCompatActivity {
 //      alarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 3000, pIntent);
     }
 
-    public boolean isQuestCall() {
-        return QuestCall;
-    }
-
-    public void setQuestCall(boolean _tf)
-    {
-        QuestCall = _tf;
-    }
 
     public void onButtonAlarmClicked(View view){
         onAlarm();
@@ -136,7 +134,6 @@ public class Quest_Main extends AppCompatActivity {
                 .setContentText("같이 산책해주세요")
                 .setTicker("MyHeailngpet 미션도착!")
                 .setSmallIcon(R.drawable.bank)
-                        //.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.bank))
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setWhen(System.currentTimeMillis())
@@ -156,7 +153,6 @@ public class Quest_Main extends AppCompatActivity {
                 .setContentText("흔들어주세요!!")
                 .setTicker("MyHeailngpet 미션도착!")
                 .setSmallIcon(R.drawable.bank)
-                        //.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.bank))
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setWhen(System.currentTimeMillis())
@@ -176,7 +172,6 @@ public class Quest_Main extends AppCompatActivity {
                 .setContentText("친한친구에게 전화를 걸어요!!")
                 .setTicker("MyHeailngpet 미션도착!")
                 .setSmallIcon(R.drawable.bank)
-                        //.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.bank))
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setWhen(System.currentTimeMillis())

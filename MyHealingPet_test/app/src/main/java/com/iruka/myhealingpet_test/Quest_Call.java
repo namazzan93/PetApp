@@ -17,11 +17,13 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
+/*
+통화목록 중 최상위 3건을 리스트뷰에 뿌려주는 클래스
 
+ */
 /**
  * Created by iRuKa on 2015-12-01.
  */
-
 class sCallLog{
     String name;
     String number;
