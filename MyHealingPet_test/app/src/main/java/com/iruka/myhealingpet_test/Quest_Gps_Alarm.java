@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.util.Log;
 import android.widget.Toast;
 
 /*
@@ -33,8 +34,9 @@ public class Quest_Gps_Alarm extends BroadcastReceiver{
             int id = intent.getIntExtra("id", 0);
             double latitude = intent.getDoubleExtra("latitude", 0.0D);
             double longitude = intent.getDoubleExtra("longitude", 0.0D);
-
+Log.d("!!!!","!!!!!!!!!!!!!!!!!!!");
             Toast.makeText(context, "근접한타겟 : " + id + ", " + latitude + ", " + longitude, Toast.LENGTH_LONG).show();
+
             ((Quest_Gps) Quest_Gps.mContext).questFinish();
         }
     }

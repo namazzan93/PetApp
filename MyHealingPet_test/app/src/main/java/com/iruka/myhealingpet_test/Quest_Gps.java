@@ -53,11 +53,13 @@ public class Quest_Gps extends ActionBarActivity {
 
     ArrayList mPendingIntentList;
 
-    String intentKey;// = "coffeeProximity";
-    static double targetlatitude;// = 37.449392;
-    static double targetlongitude;// = 126.655757;
+    String intentKey = "Proximity";
+    static double targetlatitude = 37.449392;
+    static double targetlongitude = 126.655757;
     static Double latitude;
     static Double longitude;
+
+    private Manager_DB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,11 +92,11 @@ public class Quest_Gps extends ActionBarActivity {
         Button targetBtn1 = (Button) findViewById(R.id.targetBtn1);
         targetBtn1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //targetlatitude = 37.446138;
-                //targetlongitude = 126.6600345;
+                targetlatitude = 37.446138;
+                targetlongitude = 126.6600345;
 
-                targetlatitude = 37.450603;
-                targetlongitude = 126.657326;
+                //targetlatitude = 37.450603;
+                ///targetlongitude = 126.657326;
 
                 int countTargets = 1;
                 register(1001, targetlatitude, targetlongitude, 100, -1);//위도 경도 반경 미터 무제한대기
@@ -291,6 +293,14 @@ public class Quest_Gps extends ActionBarActivity {
     }
 
     public void questFinish(){
+        db = new Manager_DB(this.getApplication());
+        int _level = db.selectValue("level");
+        int _gold = db.selectValue("gold");
+        db.updateData("level", _level + 10);
+        db.updateData("gold", _gold + 200);
+
+        ((Quest_Main) Quest_Main.mContext).offButton();
+
         AlertDialog.Builder alert = new AlertDialog.Builder(Quest_Gps.this);
         alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override

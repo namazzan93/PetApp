@@ -33,6 +33,8 @@ public class Quest_Main extends AppCompatActivity {
 
     static boolean QuestCall = false;
 
+    private Manager_DB db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,12 +113,15 @@ public class Quest_Main extends AppCompatActivity {
 
         switch (intQuestRand){
             case 0:
+                gpsButton();
                 onNotificationGPS();
                 break;
             case 1:
+                shakeButton();
                 onNotificationShake();
                 break;
             case 2:
+                callButton();
                 onNotificationCall();
                 break;
             default:

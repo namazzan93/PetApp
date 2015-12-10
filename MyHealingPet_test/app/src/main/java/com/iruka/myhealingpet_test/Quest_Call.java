@@ -1,10 +1,8 @@
 package com.iruka.myhealingpet_test;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.CallLog;
@@ -62,6 +60,7 @@ public class Quest_Call extends Activity {
     private Custom_List_Data data;
     private Quest_Call_Adapter adapter;
 
+    private Manager_DB db;
 
     public static Context mContext;
 
@@ -70,12 +69,13 @@ public class Quest_Call extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quest_call_layout);
 
+        mContext = this;
+
         ContentResolver cr = getContentResolver();
         Cursor cursor = cr.query(CallLog.Calls.CONTENT_URI, null, null, null, CallLog.Calls.DATE + " DESC");
 
         int nameidx = cursor.getColumnIndex(CallLog.Calls.CACHED_NAME);
         int numidx = cursor.getColumnIndex(CallLog.Calls.NUMBER);
-        int typeidx = cursor.getColumnIndex(CallLog.Calls.TYPE);
 
         HashMap<sCallLog, Integer> logVector = new HashMap<sCallLog, Integer>();
         ValueComparator bvc = new ValueComparator(logVector);
@@ -110,12 +110,13 @@ public class Quest_Call extends Activity {
 
         Iterator<sCallLog> it = sorted_map.keySet().iterator(); // Iterator 로 Key들을 뽑아낸다
         sCallLog obj;
-        int count = 0;
 
+        int count = 0;
         while (it.hasNext()) {  // Key를 뽑아낸 Iterator 를 돌려가며
             obj = it.next(); // Kef 를 하나씩 뽑아;
             data = new Custom_List_Data(R.drawable.call, obj.getName(), obj.getNumber(), logVector.get(obj).toString());
             Array_Data.add(data);
+            count++;
             if(count == 3)
                 break;
         }
@@ -127,21 +128,13 @@ public class Quest_Call extends Activity {
     }
 
     public void questFinish(){
-        AlertDialog.Builder alert = new AlertDialog.Builder(Quest_Call.this);
-        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();     //닫기
-                finish();
-            }
-        });
-        alert.setMessage("테스트 메세지");
-        alert.show();
+        db = new Manager_DB(this.getApplication());
+        int _level = db.selectValue("level");
+        int _gold = db.selectValue("gold");
+        db.updateData("level", _level + 10);
+        db.updateData("gold", _gold + 200);
     }
 }
-
-
-
 
 class ValueComparator implements Comparator<sCallLog> {
 

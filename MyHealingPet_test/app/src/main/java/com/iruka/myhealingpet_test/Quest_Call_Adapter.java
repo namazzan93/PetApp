@@ -62,8 +62,11 @@ public class Quest_Call_Adapter extends ArrayAdapter<Custom_List_Data>
             @Override
             public void onClick(View v) {
                 // 터치 시 전화
+                ((Quest_Call) Quest_Call.mContext).questFinish();
+
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + fpView.GetNumberView().getText()));
                 m_Context.startActivity(intent);
+
 
             }
         });

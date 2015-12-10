@@ -29,7 +29,7 @@ public class Quest_Shake extends Activity implements SensorEventListener {
     private float lastZ;
 
     private float x, y, z;
-    private static final int SHAKE_THRESHOLD = 3000; // 작을 수록 느린 스피드에서도 감지를 한다.
+    private static final int SHAKE_THRESHOLD = 5000; // 작을 수록 느린 스피드에서도 감지를 한다.
 
     private static final int DATA_X = SensorManager.DATA_X;
     private static final int DATA_Y = SensorManager.DATA_Y;
@@ -46,8 +46,10 @@ public class Quest_Shake extends Activity implements SensorEventListener {
 
     private Manager_DB db;
 
-    Random mRand;
-    private int intSahkeRand;
+    Random mRand = new Random();
+    private int intSahkeRand = mRand.nextInt(10) + 10;
+
+    private boolean finish = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,9 +59,6 @@ public class Quest_Shake extends Activity implements SensorEventListener {
         accelerormeterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         setContentView(R.layout.quest_shake_layout);
-
-        mRand = new Random();
-        intSahkeRand = mRand.nextInt(10) + 10;
 
         TextView maxText = (TextView)findViewById(R.id.maxTextView);
         maxText.setText(Integer.toString(intSahkeRand));
@@ -96,27 +95,28 @@ public class Quest_Shake extends Activity implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         // Sensor 정보가 변하면 실행됨.
-        if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             long currentTime = System.currentTimeMillis();
             long gabOfTime = (currentTime - lastTime);
             //최근 측정한 시간과 현재 시간을 비교하여 0.1초 이상되었을 때 흔듬을 감지한다.
-            if(gabOfTime > 100) {
+            if (gabOfTime > 100) {
                 lastTime = currentTime;
                 x = event.values[SensorManager.DATA_X];
                 y = event.values[SensorManager.DATA_Y];
                 z = event.values[SensorManager.DATA_Z];
 
-                speed = Math.abs(x + y + z - lastX - lastY - lastZ)/gabOfTime * 10000;
+                speed = Math.abs(x + y + z - lastX - lastY - lastZ) / gabOfTime * 10000;
 
-                if(speed>SHAKE_THRESHOLD) {
+                if (speed > SHAKE_THRESHOLD) {
                     // 이벤트 발생!!
-                    counttext = (TextView)findViewById(R.id.mainTextView);
+                    counttext = (TextView) findViewById(R.id.mainTextView);
                     counttext.setText(Integer.toString(++count));
 
 
-                    if(count >= intSahkeRand){
+                    if (count >= intSahkeRand) {
                         //Toast.makeText(this, "10번이상 흔듬!!", Toast.LENGTH_SHORT).show();
                         questFinish();
+
                     }
                     //else
                     //Toast.makeText(this, "흔들기!", Toast.LENGTH_SHORT).show();
@@ -134,7 +134,7 @@ public class Quest_Shake extends Activity implements SensorEventListener {
         int _level = db.selectValue("level");
         int _gold = db.selectValue("gold");
         db.updateData("level", _level + 10);
-        db.updateData("level", _gold + 200);
+        db.updateData("gold", _gold + 200);
 
         ((Quest_Main) Quest_Main.mContext).offButton();
 
