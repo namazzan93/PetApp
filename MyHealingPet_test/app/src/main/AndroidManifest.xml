@@ -29,6 +29,7 @@
     <uses-permission android:name="android.permission.READ_CALL_LOG"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <!-- OpenGL 사용 설정 -->
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -118,5 +119,8 @@
                 <action android:name="ccom.iruka.myhealingpet_test.EGG"/>
             </intent-filter>
         </service>
+        <activity android:name = "LoginActivity"/>
+        <activity android:name = "DataInOutActivity"/>
+        <activity android:name = "SignUpActivity"/>
     </application>
 </manifest>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 로그인화면 -->
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="4"
+    android:paddingTop="50px">
+
+    <TableRow>
+        <Button android:text="@string/saveData"
+            android:id="@+id/saveData"
+            android:onClick="onSaveButtonClicked" />
+
+        <Button android:text="@string/loadData"
+            android:id="@+id/loadData"
+            android:onClick="onLoadButtonClicked" />
+
+        <Button android:text="@string/cancel"
+            android:id="@+id/cancel"
+            android:onClick="onCancelButtonClicked" />
+    </TableRow>
+
+
+
+</TableLayout>
