@@ -85,7 +85,8 @@ public class Pet_Achievement_Check extends Dialog {
 
         int mCount = db.selectValue("mission1");
         achieve_progressbar.setProgress(mCount);
-        progress_txt.setText( mCount + "/10");
+        if(mCount >= 10) progress_txt.setText("10/10");
+        else progress_txt.setText( mCount + "/10");
 
         if(mCount == 10) achieve_btn.setEnabled(true);
         else achieve_btn.setEnabled(false);
@@ -109,7 +110,8 @@ public class Pet_Achievement_Check extends Dialog {
 
         int mCount = db.selectValue("mission3");
         achieve_progressbar.setProgress(mCount);
-        progress_txt.setText( mCount + "/10");
+        if(mCount >= 10) progress_txt.setText("10/10");
+        else progress_txt.setText( mCount + "/10");
         if(mCount == 10) achieve_btn.setEnabled(true);
         else achieve_btn.setEnabled(false);
     }
