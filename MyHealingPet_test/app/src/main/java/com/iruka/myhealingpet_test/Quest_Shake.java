@@ -44,6 +44,8 @@ public class Quest_Shake extends Activity implements SensorEventListener {
     private PowerManager pm; // 조명 유지
     private PowerManager.WakeLock wl; // 조명 유지
 
+    private Manager_DB db;
+
     Random mRand;
     private int intSahkeRand;
 
@@ -117,7 +119,7 @@ public class Quest_Shake extends Activity implements SensorEventListener {
                         questFinish();
                     }
                     //else
-                        //Toast.makeText(this, "흔들기!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "흔들기!", Toast.LENGTH_SHORT).show();
                 }
                 lastX = event.values[DATA_X];
                 lastY = event.values[DATA_Y];
@@ -128,6 +130,14 @@ public class Quest_Shake extends Activity implements SensorEventListener {
 
 
     public void questFinish(){
+        db = new Manager_DB(this.getApplication());
+        int _level = db.selectValue("level");
+        int _gold = db.selectValue("gold");
+        db.updateData("level", _level + 10);
+        db.updateData("level", _gold + 200);
+
+        ((Quest_Main) Quest_Main.mContext).offButton();
+
         AlertDialog.Builder alert = new AlertDialog.Builder(Quest_Shake.this);
         alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
@@ -136,7 +146,7 @@ public class Quest_Shake extends Activity implements SensorEventListener {
                 finish();
             }
         });
-        alert.setMessage("테스트 메세지");
+        alert.setMessage("미션 완료");
         alert.show();
     }
 }

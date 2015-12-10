@@ -23,16 +23,13 @@ public class Quest_Call_Adapter extends ArrayAdapter<Custom_List_Data>
 {
     private Context m_Context   = null;
 
-    public Quest_Call_Adapter(Context context, int textViewResourceId, ArrayList<Custom_List_Data> items)
-    {
+    public Quest_Call_Adapter(Context context, int textViewResourceId, ArrayList<Custom_List_Data> items) {
         super(context, textViewResourceId, items);
         this.m_Context = context;
     }
 
     @Override
-    public View getView(int nPosition, View convertView, ViewGroup parent)
-    {
-        // 뷰를 재사용 하기 위해 필요한 클래스
+    public View getView(int nPosition, View convertView, ViewGroup parent) {
         PointerView pView = null;
 
         View view = convertView;
@@ -64,7 +61,7 @@ public class Quest_Call_Adapter extends ArrayAdapter<Custom_List_Data>
 
             @Override
             public void onClick(View v) {
-                // 터치 시 해당 아이템 이름 출력
+                // 터치 시 전화
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + fpView.GetNumberView().getText()));
                 m_Context.startActivity(intent);
 
@@ -73,11 +70,7 @@ public class Quest_Call_Adapter extends ArrayAdapter<Custom_List_Data>
 
         return view;
     }
-
-    /**
-     * 뷰를 재사용 하기위해 필요한 클래스
-     * 클래스 자체를 view tag로 저장/불러오므로 재사용가능
-     */
+    
     private class PointerView
     {
         private View        m_BaseView      = null;
@@ -91,51 +84,37 @@ public class Quest_Call_Adapter extends ArrayAdapter<Custom_List_Data>
             this.m_BaseView = BaseView;
         }
 
-        public ImageView GetIconView()
-        {
-            if(m_ivIcon == null)
-            {
+        public ImageView GetIconView() {
+            if(m_ivIcon == null) {
                 m_ivIcon = (ImageView)m_BaseView.findViewById(R.id.iconItem);
             }
-
             return m_ivIcon;
         }
 
-        public TextView GetNameView()
-        {
-            if(m_tvName == null)
-            {
+        public TextView GetNameView() {
+            if(m_tvName == null) {
                 m_tvName = (TextView)m_BaseView.findViewById(R.id.dataItem01);
             }
-
             return m_tvName;
         }
 
-        public TextView GetNumberView()
-        {
-            if(m_tvNumber == null)
-            {
+        public TextView GetNumberView() {
+            if(m_tvNumber == null) {
                 m_tvNumber = (TextView)m_BaseView.findViewById(R.id.dataItem02);
             }
-
             return m_tvNumber;
         }
 
-        public TextView GetCounnterView()
-        {
-            if(m_tvCounter == null)
-            {
+        public TextView GetCounnterView() {
+            if(m_tvCounter == null) {
                 m_tvCounter = (TextView)m_BaseView.findViewById(R.id.dataItem03);
             }
-
             return m_tvCounter;
         }
     }
 }
 
-/**
- * 리스트의 데이터 클래스
- */
+
 class Custom_List_Data
 {
     private int     Image_ID;
@@ -143,8 +122,7 @@ class Custom_List_Data
     private String  Number;
     private String  Counter;
 
-    public Custom_List_Data(int _Image_ID, String _Name, String _Number, String _Counter)
-    {
+    public Custom_List_Data(int _Image_ID, String _Name, String _Number, String _Counter) {
         this.setImage_ID(_Image_ID);
         this.setName(_Name);
         this.setNumber(_Number);

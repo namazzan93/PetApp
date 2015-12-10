@@ -34,7 +34,7 @@ import java.util.ArrayList;
 /*
 내 위치 지도 표시 및 목적지 지도표시 위치비교
  */
- /**
+/**
  * Created by iRuKa on 2015-11-18.
  */
 public class Quest_Gps extends ActionBarActivity {
@@ -53,9 +53,9 @@ public class Quest_Gps extends ActionBarActivity {
 
     ArrayList mPendingIntentList;
 
-    String intentKey = "coffeeProximity";
-    static double targetlatitude = 37.449392;
-    static double targetlongitude = 126.655757;
+    String intentKey;// = "coffeeProximity";
+    static double targetlatitude;// = 37.449392;
+    static double targetlongitude;// = 126.655757;
     static Double latitude;
     static Double longitude;
 
@@ -73,7 +73,6 @@ public class Quest_Gps extends ActionBarActivity {
 
         // 센서 관리자 객체 참조
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         mPendingIntentList = new ArrayList();
 
@@ -91,8 +90,11 @@ public class Quest_Gps extends ActionBarActivity {
         Button targetBtn1 = (Button) findViewById(R.id.targetBtn1);
         targetBtn1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                targetlatitude = 37.446138;
-                targetlongitude = 126.6600345;
+                //targetlatitude = 37.446138;
+                //targetlongitude = 126.6600345;
+
+                targetlatitude = 37.450603;
+                targetlongitude = 126.657326;
 
                 int countTargets = 1;
                 register(1001, targetlatitude, targetlongitude, 100, -1);//위도 경도 반경 미터 무제한대기
@@ -110,7 +112,7 @@ public class Quest_Gps extends ActionBarActivity {
 
             }
         });
-
+        /*
         Button targetBtn2 = (Button) findViewById(R.id.targetBtn2);
         targetBtn2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -156,7 +158,7 @@ public class Quest_Gps extends ActionBarActivity {
 
             }
         });
-
+        */
         // 위치 확인하여 위치 표시 시작
         startLocationService();
     }
@@ -177,10 +179,6 @@ public class Quest_Gps extends ActionBarActivity {
         map.setMyLocationEnabled(false);
     }
 
-
-    /**
-     * 현재 위치 확인을 위해 정의한 메소드
-     */
     private void startLocationService() {
         // 위치 관리자 객체 참조
         LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -207,9 +205,6 @@ public class Quest_Gps extends ActionBarActivity {
         Toast.makeText(getApplicationContext(), "위치 확인 시작함. 로그를 확인하세요.", Toast.LENGTH_SHORT).show();
     }
 
-    /**
-     * 리스너 정의
-     */
     private class GPSListener implements LocationListener {
         /**
          * 위치 정보가 확인되었을 때 호출되는 메소드
@@ -228,23 +223,14 @@ public class Quest_Gps extends ActionBarActivity {
             textView02.setText("현재 : " + latitude + ", " + longitude);
         }
 
-        public void onProviderDisabled(String provider) {
-        }
+        public void onProviderDisabled(String provider) {        }
 
-        public void onProviderEnabled(String provider) {
-        }
+        public void onProviderEnabled(String provider) {        }
 
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-        }
+        public void onStatusChanged(String provider, int status, Bundle extras) {        }
 
     }
 
-    /**
-     * 현재 위치의 지도를 보여주기 위해 정의한 메소드
-     *
-     * @param latitude
-     * @param longitude
-     */
     private void showCurrentLocation(Double latitude, Double longitude) {
         // 현재 위치를 이용해 LatLon 객체 생성
         LatLng curPoint = new LatLng(latitude, longitude);
@@ -258,21 +244,9 @@ public class Quest_Gps extends ActionBarActivity {
 
     }
 
-
-    /**
-     * 아이콘을 표시하기 위해 정의한 메소드
-     */
-
-
-
-    /**
-     * 센서의 정보를 받기 위한 리스너 객체 생성
-     */
     private final SensorEventListener mListener = new SensorEventListener() {
         private int iOrientation = -1;
-
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
         }
 
         // 센서의 값을 받을 수 있도록 호출되는 메소드
@@ -285,9 +259,6 @@ public class Quest_Gps extends ActionBarActivity {
 
     };
 
-    /**
-     * register the proximity intent receiver
-     */
     private void register(int id, double latitude, double longitude, float radius, long expiration) {
         Intent proximityIntent = new Intent(intentKey);
         proximityIntent.putExtra("id", id);
@@ -300,19 +271,10 @@ public class Quest_Gps extends ActionBarActivity {
         mPendingIntentList.add(intent);
     }
 
-    public void onStart() {
-        super.onStart();
+    public void onStart() { super.onStart(); }
 
-    }
-    public void onStop() {
-        super.onStop();
+    public void onStop() {super.onStop(); unregister(); }
 
-        unregister();
-    }
-
-    /**
-     * 등록한 정보 해제
-     */
     private void unregister() {
         if (mPendingIntentList != null) {
             for (int i = 0; i < mPendingIntentList.size(); i++) {
@@ -327,7 +289,6 @@ public class Quest_Gps extends ActionBarActivity {
             mIntentReceiver = null;
         }
     }
-
 
     public void questFinish(){
         AlertDialog.Builder alert = new AlertDialog.Builder(Quest_Gps.this);

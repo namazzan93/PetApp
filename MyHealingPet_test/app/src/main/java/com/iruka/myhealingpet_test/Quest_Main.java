@@ -60,17 +60,17 @@ public class Quest_Main extends AppCompatActivity {
 
         Intent intent = new Intent(this, Quest_Alarm.class);
         PendingIntent pIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-        //cal.getTimeInMillis()//
+        cal.getTimeInMillis();
 
 
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 10, pIntent);
-        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000 * 60 * 60, pIntent);
+        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 10, pIntent);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000 * 60 * 60, pIntent);
     }
 
     public void offAlarm(){
         QuestCall = false;
 
-        //Toast.makeText(getApplicationContext(), "알람 해제", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "알람 해제", Toast.LENGTH_SHORT).show();
         AlarmManager alarmManager = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
 
         Intent Intent = new Intent(this, Quest_Alarm.class);
@@ -81,7 +81,6 @@ public class Quest_Main extends AppCompatActivity {
         // 새로 알람을 실행하게 된다. 상황에 따라 유용하게 사용 할 수 있다.
 //      alarmManager.set(AlarmManager.RTC, System.currentTimeMillis() + 3000, pIntent);
     }
-
 
     public void onButtonAlarmClicked(View view){
         onAlarm();
@@ -199,5 +198,11 @@ public class Quest_Main extends AppCompatActivity {
         onGPS.setEnabled(false);
         onShake.setEnabled(false);
         onCall.setEnabled(true);
+    }
+
+    public void offButton(){
+        onGPS.setEnabled(false);
+        onShake.setEnabled(false);
+        onCall.setEnabled(false);
     }
 }
