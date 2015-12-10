@@ -41,7 +41,6 @@ public class Pet_Achievement extends Activity {
         mArrayList.add("하나로 만족 못하는 나");
         mArrayList.add("너가 먹는 모습만 봐도 배불러");
 
-
         mCompleteList.add("");
         mCompleteList.add("");
         mCompleteList.add("");
@@ -71,12 +70,12 @@ public class Pet_Achievement extends Activity {
                     ++temp;
                     db.updateData("mission"+(i + 1), temp);
                 }
-
             }
             complete_adapter.notifyDataSetChanged();
             mCheck.dismiss();
         }
     };
+
     AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -84,7 +83,6 @@ public class Pet_Achievement extends Activity {
                 mCheck = new Pet_Achievement_Check(mContext, position, checkListener);
                 mCheck.show();
 
-            //Toast.makeText(getApplication(), mArrayList.get(position), Toast.LENGTH_SHORT).show();
         }
     };
 

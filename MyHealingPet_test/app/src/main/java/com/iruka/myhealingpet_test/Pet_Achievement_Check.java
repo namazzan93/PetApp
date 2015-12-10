@@ -27,6 +27,7 @@ public class Pet_Achievement_Check extends Dialog {
     private Manager_DB db;
     private int mission_number;
     private View.OnClickListener checkListener;
+
     @Override
     protected void onCreate(Bundle saveIndstanceState){
         super.onCreate(saveIndstanceState);

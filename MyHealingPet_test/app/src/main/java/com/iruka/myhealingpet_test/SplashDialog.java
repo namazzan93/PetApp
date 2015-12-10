@@ -26,6 +26,7 @@ public class SplashDialog extends Dialog {
     private ImageView img;
     private TextView txt_msg;
     private View.OnClickListener startListener;
+
     @Override
         protected void onCreate(Bundle saveIndstanceState){
             super.onCreate(saveIndstanceState);

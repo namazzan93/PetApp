@@ -37,17 +37,10 @@ public class Pet_Service extends Service {
         private RelativeLayout chatHeadView;
         private ImageView chatHead;
         private long time_start, time_end;
-        private float START_X, START_Y;
-        private int PREV_X, PREV_Y;
-        private int MAX_X = -1, MAX_Y = -1;
         private int x_init_cord, y_init_cord, x_init_margin, y_init_margin;
         private GestureDetector mDoubleTapGesture;
         private AnimationDrawable mAni;
-        private boolean isDoubleClick = false;
-        public static boolean running = false;
-        private Animation anim;
         private Thread thread;
-        private Handler mHandler;
         private Manager_DB db;
         private int cnt_heart;
         private int cnt_level;
@@ -55,7 +48,6 @@ public class Pet_Service extends Service {
         private int hungry = 0;
         private int heart = 0;
         private int mission1 = 0;
-        public static Pet_Service myPet;
         private Point szWindow = new Point();
         private boolean isLeft = true;
         private LinearLayout txtView, txt_linearlayout;
@@ -85,7 +77,6 @@ public class Pet_Service extends Service {
             public boolean onDoubleTapEvent(MotionEvent e) { return false; }
             @Override
             public boolean onDoubleTap(MotionEvent e) {
-                isDoubleClick = true;
                 if(Pet_MenuBar.MenuActive){
                     Pet_MenuBar.myMenu.finish();
                 }
@@ -101,7 +92,6 @@ public class Pet_Service extends Service {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 setDBDate();
-                isDoubleClick = false;
                 if(mDoubleTapGesture != null) {
                     mDoubleTapGesture.onTouchEvent(event);    //제스처는 더블탭만 인식, 사용.
                 }
@@ -115,12 +105,6 @@ public class Pet_Service extends Service {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         time_start = System.currentTimeMillis();
-                        /*
-                        if (MAX_X == -1) setMaxPosition();
-                        START_X = event.getRawX();
-                        START_Y = event.getRawY();
-                        PREV_X = layoutParams.x;
-                        PREV_Y = layoutParams.y; */
 
                         x_init_cord = x_cord;
                         y_init_cord = y_cord;
@@ -128,6 +112,7 @@ public class Pet_Service extends Service {
                         x_init_margin = layoutParams.x;
                         y_init_margin = layoutParams.y;
                         break;
+
                     case MotionEvent.ACTION_MOVE:
                         time_end = System.currentTimeMillis();
                         if(time_end - time_start > 150) chatHead.setImageResource(R.drawable.drag);
@@ -140,12 +125,7 @@ public class Pet_Service extends Service {
 
                         layoutParams.x = x_cord_Destination;
                         layoutParams.y = y_cord_Destination;
-                        /*
-                        int x = (int) (event.getRawX() - START_X);
-                        int y = (int) (event.getRawY() - START_Y);
-                        params.x = PREV_X + x;
-                        params.y = PREV_Y + y;
-                        optimizePosition();  */
+
                         windowManager.updateViewLayout(chatHeadView, layoutParams);
                         break;
 
@@ -171,6 +151,8 @@ public class Pet_Service extends Service {
                         resetPosition(x_start);
 
                         chatHead.setImageResource(R.drawable.bell_cat);
+                        chatHead.setImageResource(R.drawable.frame_normal_bell);
+                        mAni = (AnimationDrawable) chatHead.getDrawable();
                         mAni.start();
                         time_end = System.currentTimeMillis();
                         if((time_end - time_start) > 45 && (time_end - time_start) < 300) {
@@ -178,18 +160,18 @@ public class Pet_Service extends Service {
                                 mission1++;
                                 db.updateData("mission1", mission1);
                             }
-                            cnt_heart++;
+                            ++cnt_heart;
                             if(cnt_heart >= 3){
                                 cnt_heart = 0;
                                 if(heart < 100) {
-                                    heart++;
+                                    ++heart;
                                     db.updateData("heart", heart);
                                 }
-                                cnt_level++;
+                                ++cnt_level;
                                 if(cnt_level >= 2){
                                     cnt_level = 0;
                                     if(level < 100) {
-                                        level++;
+                                        ++level;
                                         db.updateData("level", level);
                                     }
                                 }
@@ -240,7 +222,6 @@ public class Pet_Service extends Service {
         @Override
         public void onCreate() {
             super.onCreate();
-            myPet = Pet_Service.this;
             db = new Manager_DB(this.getApplication());
             setDBDate();
             cnt_heart = 0; cnt_level = 0;
@@ -271,8 +252,6 @@ public class Pet_Service extends Service {
             params.x = 0;
             params.y = 1000;
             windowManager.addView(chatHeadView, params);
-           // playAnimation();
-           // chatHeadView.startAnimation(anim);
 
             chatHead.post(new Runnable() {
                 @Override
@@ -475,7 +454,7 @@ public class Pet_Service extends Service {
                 sMsg = "심심하다냥~";
                 break;
             case 2:
-                sMsg = "집사, 어디가냐냥~";
+                sMsg = "집사 어디가냐냥~";
                 break;
             case 3:
                 sMsg = "놀아달라냥~";

@@ -24,18 +24,12 @@ public class Pet_Status extends Activity {
     private int hungry;
     private Manager_DB db;
     private SQLiteDatabase sql;
-    public static Pet_Status myStatus;
-    private Thread level_thread;
-    private Thread heart_thread;
-    private Thread hungry_thread;
-
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pet_status_layout);
         Manager_Process.getInstance().addActivity(this);
         setLayout();
-        myStatus = Pet_Status.this;
 
         db = new Manager_DB(this.getApplication());
 
@@ -68,10 +62,6 @@ public class Pet_Status extends Activity {
         this.pbhungry = (ProgressBar)findViewById(R.id.pbhungry);
         this.top = (View)findViewById(R.id.status_top);
     }
-
-    public int getLevel(){return level;}
-    public int getHungry(){return hungry;}
-    public int getHeart(){return heart;}
 
     public void setDBDate(){
         level = db.selectValue("level");
