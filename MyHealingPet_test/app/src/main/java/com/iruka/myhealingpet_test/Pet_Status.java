@@ -54,9 +54,9 @@ public class Pet_Status extends Activity {
                 finish();
             }
         });
-        txtlevel.setText("" + pblevel.getProgress());
-        txtheart.setText("" + pbheart.getProgress());
-        txthungry.setText("" + pbhungry.getProgress());
+        txtlevel.setText(pblevel.getProgress() + "/100");
+        txtheart.setText(pbheart.getProgress()+"/100");
+        txthungry.setText(pbhungry.getProgress()+"/100");
     }
 
     private void setLayout(){
