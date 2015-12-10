@@ -69,6 +69,8 @@ public class Pet_Achievement extends Activity {
                     mCompleteList.set(i, "완료");
                     ++temp;
                     db.updateData("mission"+(i + 1), temp);
+                    int gold = db.selectValue("gold");
+                    db.updateData("gold", gold + 200);
                 }
             }
             complete_adapter.notifyDataSetChanged();

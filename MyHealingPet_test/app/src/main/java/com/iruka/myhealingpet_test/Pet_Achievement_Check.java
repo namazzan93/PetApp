@@ -23,7 +23,7 @@ public class Pet_Achievement_Check extends Dialog {
 
     private Button achieve_btn, back_btn;
     private ProgressBar achieve_progressbar;
-    private TextView txtAchieveName, txtAchieveComnet, progress_txt;
+    private TextView txtAchieveName, txtAchieveComnet, progress_txt, txt_reward;
     private Manager_DB db;
     private int mission_number;
     private View.OnClickListener checkListener;
@@ -75,6 +75,7 @@ public class Pet_Achievement_Check extends Dialog {
         achieve_progressbar = (ProgressBar)findViewById(R.id.achieve_progressBar);
         txtAchieveName = (TextView)findViewById(R.id.txtAchieveName);
         txtAchieveComnet = (TextView)findViewById(R.id.txtAchieveComent);
+        txt_reward = (TextView)findViewById(R.id.txt_reward);
         progress_txt = (TextView)findViewById(R.id.progress_txt);
         back_btn = (Button)findViewById(R.id.back_btn);
     }
@@ -82,6 +83,7 @@ public class Pet_Achievement_Check extends Dialog {
     private void mission1(){
         txtAchieveName.setText("손가락 운동 좋아해");
         txtAchieveComnet.setText("고양이를 10번 터치하세요.");
+        txt_reward.setText("보상 : 200 gold");
         achieve_progressbar.setMax(10);
 
         int mCount = db.selectValue("mission1");
@@ -96,6 +98,7 @@ public class Pet_Achievement_Check extends Dialog {
     private void mission2(){
         txtAchieveName.setText("하나로 만족 못하는 나");
         txtAchieveComnet.setText("모든 종류의 고양이를 모아보세요");
+        txt_reward.setText("보상 : 200 gold");
         achieve_progressbar.setMax(10);
 
         //int mCount = db.selectValue("mission2");
@@ -107,6 +110,7 @@ public class Pet_Achievement_Check extends Dialog {
     private void mission3(){
         txtAchieveName.setText("너가 먹는 모습만 봐도 배불러");
         txtAchieveComnet.setText("배고픈 고양이에게 먹이를 10번 주세요");
+        txt_reward.setText("보상 : 200 gold");
         achieve_progressbar.setMax(10);
 
         int mCount = db.selectValue("mission3");
